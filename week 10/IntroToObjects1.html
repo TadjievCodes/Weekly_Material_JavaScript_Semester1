@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Intro to Objects</h1>
+        <div id="dUsers">
+
+        </div>
+        <script>
+            // Creating some objects using JSON
+            
+            // JSON approach to creating objects
+            var person1 = {
+                name: "John",
+                age: 54, 
+                money: 164.00,
+                height: 183
+            }
+
+            var person2 = {
+                name: "Jane",
+                age: 34,
+                money: 4523.00
+            }
+
+            console.log( person1.name );
+            console.log( person1.age );
+            console.log( "$" + person1.money );
+
+            console.log( person2.name );
+            console.log( person2.age );
+            console.log( "$" + person2.money );
+
+            console.log( person2.height); // person2 does not have the height property
+
+            // Create Objects using Constructor
+            function Person(n, a, m, g, e)
+            {
+                // assign parameter values to the objects properties
+                this.name = n;
+                this.age = a;
+                this.money = m;
+                this.gender = g;
+                this.eyeColor = e;
+            }
+
+            // Calling the constructor
+            var person3 = new Person("Kevin", 27, 756.00, "Blue");
+
+            console.log( person3.name );
+            console.log( person3.age );
+            console.log( "$" + person3.money );
+            console.log( person3.gender);
+            console.log( person3.eyeColor); // The order of paremeters in the constructor matters
+
+            var person4 = new Person("Sarah", 33, 10000.00, "Female");
+
+            console.log( person4.name );
+            console.log( person4.age );
+            console.log( "$" + person4.money );
+            console.log( person4.gender);
+            console.log( person4.eyeColor);
+
+
+            // variable - stores one value 
+            // array - stores many values, indexed 
+            // object - contains many properties of values, stored in a single variable
+
+            // Create an array to store many objects
+            var users = [];
+
+            function User(u, p, e)
+            {
+                this.name = u;
+                this.pass = p;
+                this.email = e;
+            }
+
+            // Instance of user Object
+            var user1 = new User("Donna", "water45", "donna@email.com");
+
+            // add insantce to array
+            users.push( user1 );
+
+            // Creating a bunch of instanced users and immediately pushing them to an array, 
+            // we avoid creating, unused variables
+            users.push( new User("David", "macadamia74", "david@email.com") );
+            
+            users.push( new User("Jason", "florida21", "jason@email.com") );
+            
+            users.push( new User("Stacey", "winter32", "stacey@email.com") );
+            
+            users.push( new User("Patrica", "tree32", "Patrica@email.com") );
+
+            var oddUser = {
+                name: "Hacker",
+                pass: "hackerman27",
+                email: "hackerman@email.com",
+                admin: true
+            }
+
+            users.push( oddUser );
+
+            // output array to console
+            console.info(users);
+
+            // Output users to the webpage
+            for (var i = 0; i < users.length; i++)
+            {
+                // Create output
+                var str = "User " + (i + 1) + ": ";
+                str = str + users[i].name;
+                str += " " + users[i].email; // Compound operator
+                
+                str += " (isAdmin: " + users[i].admin + ")"; // When looping through an array of objects, make sure the properties exist or you may get an undefined
+
+                // Output to div
+                document.getElementById("dUsers").innerHTML += str + "<br/>";
+            }
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,111 @@
+<html>
+	<body>
+		<h1>
+			ROCK PAPER SCISSORS
+		</h1>
+		<script>
+			// ROCK PAPER SCISSORS
+			
+			// Rock 	== 1
+			// Paper 	== 2 
+			// Scissors == 3
+			const ROCK 		= 1;
+			const PAPER		= 2;
+			const SCISSORS	= 3;
+			
+			// \ is the "escape" character, these are used in combination with other characters to alter functionality of that character, inside of a string:    \" and \n
+			//var str = "The man was quoted saying  \"  hello world! \" and the people were amazed";
+			
+			var promptMessage = "make your selection: \n1 - Rock \n2 - Paper \n3 - Scissors";
+			
+			// The users Input 
+			var playerInput = parseInt( prompt("Player " + promptMessage) );
+
+			var computerInput = parseInt( prompt("Player 2 " + promptMessage) );
+			
+			// TODO: later we will change this to be randomly generated
+			
+			// Compare the users choices based on the rules
+			var result = "Error";
+			
+			
+			if (playerInput == ROCK)
+			{
+				// Rock conditions 
+				if (computerInput == ROCK)
+				{
+					result = "Draw";
+				}
+				else if (computerInput == PAPER)
+				{
+					result = "Computer wins";
+				}
+				else if (computerInput == SCISSORS)
+				{
+					result = "Player wins";
+				}
+				else
+				{
+					result = "Invalid input from computer";
+				}
+				
+			}
+			else if (playerInput == PAPER)
+			{
+				// Paper conditions 
+				if (computerInput == ROCK)
+				{
+					result = "Player wins";
+				}
+				else if (computerInput == PAPER)
+				{
+					result = "Draw";
+				}
+				else if (computerInput == SCISSORS)
+				{
+					result = "Computer wins";
+				}
+				else
+				{
+					result = "Invalid input from computer";
+				}
+			}
+			else if (playerInput == SCISSORS)
+			{
+				// Scissors conditions 
+				if (computerInput == ROCK)
+				{
+					result = "Computer Wins";
+				}
+				else if (computerInput == PAPER)
+				{
+					result = "Player Wins";
+				}
+				else if (computerInput == SCISSORS)
+				{
+					result = "Draw";
+				}
+				else
+				{
+					result = "Invalid input from computer";
+				}
+			}
+			else 
+			{
+				// An invalid Input (because the previous if's were not triggered
+				result = "Player entered an invalid selection";
+			}
+			
+			
+			
+			// Output the result 
+			console.log(playerInput);
+			console.log(computerInput);
+			console.log(result);
+			
+			document.write(result);
+			
+			
+		</script>
+	</body>
+</html>

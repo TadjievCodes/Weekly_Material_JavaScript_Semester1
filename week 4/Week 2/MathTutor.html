@@ -1,0 +1,80 @@
+<!--
+Name:		Daniel Malnati
+Date:		January, 2019
+Purpose:	Selection Structures
+			- testing multi conditions
+			- random numbers
+Resource:	Chapter 27
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Math Tutor</title>
+    <script>
+        alert("Math Tutor");
+
+        //Generate a random number between 1 and 10
+        var num1 = Math.trunc(Math.random() * (10 - 1 + 1) + 1);
+        console.log(num1);
+        //var num1 = Math.trunc(Math.random() * 6 + 1);
+        //console.log(mum1);
+
+        //Generate a random number between 1 and 10
+        var num2 = Math.trunc(Math.random() * (10 - 1 + 1) + 1);
+        console.log(num2);
+
+        //Generate a random number between 1 and 4
+        var operator = Math.trunc(Math.random() * (4 - 1 + 1) + 1);
+        console.log(operator);
+
+        //Check the math operator value, then do the math and output the equation
+        var answer = 0;
+        var userAnswer = 0;
+
+        if (operator === 4) {
+            answer = num1 + num2;
+            userAnswer = prompt("What is " + num1 + " + " + num2 + "?" + "<br>");
+        } else if (operator === 3) {
+            answer = num1 - num2;
+            userAnswer = prompt("What is " + num1 + " - " + num2 + "?" + "<br>");
+        } else if (operator === 2) {
+            answer = num1 * num2;
+            userAnswer = prompt("What is " + num1 + " * " + num2 + "?" + "<br>");
+        } else if (operator === 1) {
+            answer = num1 / num2;
+            userAnswer = prompt("What is " + num1 + " / " + num2 + "?" + "<br>");
+        }
+
+        //Check the operator to convert the answer correctly
+        if (operator === 4 || operator === 3 || operator === 2) {
+            userAnswer = parseInt(userAnswer);
+
+            console.log(answer);
+            console.log(userAnswer);
+        } else if (operator === 1) {
+            //output the raw answer
+            console.log(answer);
+            userAnswer = parseFloat(userAnswer);
+
+            //Match decimal places
+            userAnswer = userAnswer.toFixed(2);
+            answer = answer.toFixed(2);
+
+            console.log(answer);
+            console.log(userAnswer);
+        }
+
+        //Check the user's answer against the correct answer
+        if (userAnswer === answer) {
+            document.write("Correct" + "<br>");
+        } else {
+            document.write("Incorrect" + "<br>");
+        }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

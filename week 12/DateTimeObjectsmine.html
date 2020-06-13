@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<body style="text-align: center;">
+    <h1> Date Object </h1>
+
+    <div>
+        WineBroswer:
+        <p>
+            Years Aged: <input type="number" id="tbYearsAged" placeholder="10" />
+        </p>
+        <p>
+            <input type="radio" name="rbSearchType" value="Today" onclick="changeInputType();" checked/> Todays Date
+            <input type="radio" name="rbSearchType" value="Other" onclick="changeInputType();" /> Specific Date
+        </p>
+        <p id="pDateSearch" hidden>
+            From Date: <input type="text" id="tbDate" placeholder="yyyy-mm-dd" />
+            <input type="button" value="Search" onclick="wineSearch('Specific')" />
+        </p>
+        <p id="pCurrentDaySearch">
+            <input type="button" value="Search from today" onclick="wineSearch('Today')" />
+        </p>
+    </div>
+    <hr>
+    <div id="dOutput"></div>
+
+    <script>
+        // Date Object - milliseconds
+        // Origin Date: January 1st 1970 
+
+        console.log(Date.now()); // Static Function call
+
+        // Recall the Math Object
+        // These are all static functions as well
+        // Math.round(), Math.random() etc...
+
+        // To call mathods we have to create an instance of the object we want to use
+        //var person1 = new Person("Gary");
+        //person1.getName();
+
+        var currentTime = new Date(); // Default constructor "empty list of params"
+
+        console.log(currentTime);
+        console.log(currentTime.toString());
+
+        // Time in milliseconds, just like Date.now()
+        console.log(currentTime.getTime());
+
+        // Get hour, minutes, seconds
+        console.log(currentTime.getHours());
+        console.log(currentTime.getMinutes());
+        console.log(currentTime.getSeconds());
+
+        // Get Day - 0 1 2 3 4 5 6
+        // 0 - Sunday, 1 - Monday ... 6 - Saturday 
+        console.log(currentTime.getDay());
+
+        // Quick conversion from numerical index to string day
+        var dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        console.log(dayOfWeek[currentTime.getDay()]);
+
+        // Get Date - returns day of the week (number)
+        console.log(currentTime.getDate());
+
+        // Get Month - returns month
+        // 0 - January, 1 - Feb .... 11 - Dec
+        console.log(currentTime.getMonth());
+
+        // Create instance using a specific date
+        var valentinesDay2020 = new Date("Feb 14 2020");
+        var valentinesDay2012 = new Date("Feb 14 2012");
+
+        console.log(dayOfWeek[valentinesDay2020.getDay()]);
+        console.log(dayOfWeek[valentinesDay2012.getDay()]);
+
+        // How many days have passed since Valentines Day?
+        console.log(valentinesDay2020.getTime()); // returns milliseconds
+
+        var differenceInMilliseconds = Date.now() - valentinesDay2020.getTime();
+        console.log(differenceInMilliseconds);
+
+        var numberOfDaysPassed = Math.round(differenceInMilliseconds / (24 * 3600000)); // 3600000 milliseconds in an hour, there are 24 hours in the day
+
+        console.log(numberOfDaysPassed + " days have passed since valentines day 2020.");
+
+        // Compare two Date instances times
+        console.log(howManyDaysPassed(valentinesDay2012, valentinesDay2020) + " days between valentines day 2012 and valentines day 2020 ");
+
+        var christmas2020 = new Date("Dec 25 2020");
+        var christmas2019 = new Date("Dec 25 2019");
+
+        // A Negative value, means from the perspective of the first date, that the second date has not passed yet
+        console.log(howManyDaysPassed(currentTime, christmas2020));
+
+        // A Positive value, means from the perspective of the first date, that the second date HAS passed yet
+        console.log(howManyDaysPassed(currentTime, christmas2019));
+
+        // Examples of use: current day and a specified date, you could figure out
+        // Expiration
+        //     - expired product
+        //     - expired license plate sticker
+        //     - expired credit card 
+        //          etc
+
+        // Format/Syntax for date initialization
+        // new Date("Dec 25 2020");
+        // new Date("Dec 25 2020 12:50:34");
+        // new Date("2020-04-09");
+
+
+        // This function returns number of days between two dates
+        function howManyDaysPassed(day1, day2) {
+            var differenceInMilliseconds = day1.getTime() - day2.getTime();
+            //var differenceInMilliseconds = Math.abs(day1.getTime() - day2.getTime()); // This will drop the negative
+            //console.log(differenceInMilliseconds);
+
+            return Math.round(differenceInMilliseconds / (24 * 3600000)); // 3600000 milliseconds in an hour, there are 24 hours in the day
+        }
+
+
+
+        // ===================================
+        // Vintage Wine functions
+        var wineSelection = []; // Database of Wines
+        var winesToDisplay = []; // Wines to display
+
+        wineSelection.push(new Wine("Example wine", new Date("1994-03-10")));
+        wineSelection.push(new Wine("Italian Red", new Date("1970-01-01")));
+        wineSelection.push(new Wine("Arctic White", new Date("1870-01-01")));
+        wineSelection.push(new Wine("Yellow Tail", new Date("2012-01-01")));
+        wineSelection.push(new Wine("Dornish Red", new Date("1958-01-01")));
+
+
+        function Wine(n, d) {
+            this.name = n;
+            this.date = d;
+
+
+        }
+
+        // Search function that will handle the users input
+        function wineSearch(type) {
+            // Retreive User Input
+            var userInputYears = document.getElementById("tbYearsAged").value;
+            userInputYears = parseInt(userInputYears);
+
+            // Date object we will use 
+            var theDate = null; // null == no initialized value
+
+            // Clear the array 
+            winesToDisplay = [];
+
+            // type will be specific or today 
+            if (type == "Today") {
+                // Filter using Date.now()
+                theDate = currentTime;
+
+            } else if (type == "Specific") {
+                // Filter using entered date
+                theDate = new Date(document.getElementById("tbDate").value);
+            }
+
+            // check for wines
+            for (var i = 0; i < wineSelection.length; i++) {
+                // Current wine we are checking
+                var theWine = wineSelection[i];
+
+                // Compare number of years
+                var theDifference = theDate.getFullYear() - theWine.date.getFullYear();
+
+                if (theDifference >= userInputYears) {
+                    // push to the display array 
+                    winesToDisplay.push(theWine);
+                }
+            } // end for
+
+            // Ouput array
+            outputWines(winesToDisplay);
+
+        }
+
+        function outputWines(wineArray) {
+            var theOutputArea = document.getElementById("dOutput");
+
+            // Output to table
+            var table = document.createElement("table");
+            var tbody = document.createElement("tbody");
+
+            // loop through array
+            for (var i = 0; i < wineArray.length; i++) {
+                var row = document.createElement("tr"); // Row
+
+                var nameCol = document.createElement("td"); // Col 1
+                var dateCol = document.createElement("td"); // Col 2
+
+                nameCol.innerText = wineArray[i].name;
+                dateCol.innerText = wineArray[i].date.getFullYear();
+
+                // append columns to row
+                row.appendChild(nameCol);
+                row.appendChild(dateCol);
+
+                // append the row to the table
+                tbody.appendChild(row);
+            } // end for
+
+            table.appendChild(tbody);
+            dOutput.innerHTML = "";
+            dOutput.appendChild(table);
+
+        }
+
+
+
+
+        // Toggles between the 2 inputs
+        function changeInputType() {
+            // paragrah containers
+            var otherForm = document.getElementById("pDateSearch");
+            var todayForm = document.getElementById("pCurrentDaySearch");
+
+            // radio button selected check
+            var type = document.querySelector("input[name='rbSearchType']:checked").value;
+
+            // Hide form that isnt selected
+            if (type == "Today") {
+                otherForm.hidden = true;
+                todayForm.hidden = false;
+            } else if (type == "Other") {
+                otherForm.hidden = false;
+                todayForm.hidden = true;
+            } else {
+                console.err("Error: Radio Button returned unknown value");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

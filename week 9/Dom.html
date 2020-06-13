@@ -1,0 +1,110 @@
+<html>
+
+<body>
+    <div id="drinks">
+        <p>Coffee</p>
+        <p>Tea</p>
+        <p>Milk</p>
+    </div>
+
+    <div id="fruit">
+        <p>Apple</p>
+        <p>Orange</p>
+        <p>Banana</p>
+    </div>
+
+    <script>
+        //body node
+        node = document.childNodes[0].childNodes[1];
+        console.log(node);
+
+        //the first div
+        node = document.childNodes[0].childNodes[1].childNodes[0];
+        console.log(node);
+
+        //some garbage formatting text node
+        node = document.childNodes[0].childNodes[1].childNodes[0];
+
+
+        //The drinks div
+        //The list of Nodes inside the Drink Div
+        var nodeList = document.childNodes[0].childNodes[1].childNodes[1].childNodes;
+        console.log(nodeList);
+
+
+
+        //console.log(document.chilNodes[0].chilNodes[1].chilNodes[0]);
+
+        console.log(node.childNodes);
+
+
+        //More specific relationship based navigation in the DOM
+        node = null;
+        node = document.getElementById("fruit");
+        console.log(node);
+
+
+        // We want to see the previous sibling of the fruit div
+        console.log(node.parentElement);
+        // We want to see the previous sibling of the pevious sibling
+        console.log(node.previousSibling.previousSibling);
+
+
+
+        //Access some stuff from the drinks div
+        var nodeAttributeResult = node.previousSibling.previousSibling.hasAttributes("id");
+        console.log(nodeAttributeResult);
+
+        //We want to see the next sibling
+        console.log(node.nextSibling.nextSibling);
+
+
+        var nodeAttributeResult = node.previousSibling.previousSibling.hasAttributes("id");
+        console.log(nodeAttributeResult);
+
+
+        //Adding an element to the drinks div
+        var drinksDiv = node.previousSibling.previousSibling; //using node from above
+
+
+
+
+        //Array of menu items
+        var menuItems = ["Milkshake", "Espresso", "Latte", "Strawberry Jam"];
+        for (var index = 0; index < menuItems.length; index++) {
+            //Creat and Add an item to that drinks div
+
+            var temp = document.createElement("p");
+            temp.style.background = "red";
+            temp.style.color = "yellow";
+            temp.innerText = menuItems[index];
+            drinksDiv.appendChild(temp);
+
+            if (index % 2 == 0) {
+                temp.style.background = "green";
+                temp.style.color = "yellow";
+            }
+
+
+
+
+        }
+
+
+
+
+        //Create a paragraph p element
+        var newElement = document.createElement("p");
+
+        //we add orange item to that nodelist as beofre it was empty p
+        newElement.innerText = "Orange";
+
+        //Add element to the parents list of child nodes
+        drinksDiv.appendChild(newElement);
+
+
+        console.log(drinksDiv.childNodes);
+    </script>
+</body>
+
+</html>

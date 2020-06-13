@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>
+        Baby Name Generator
+    </h1>
+    <input type="button" value="Change Gender" onclick="switchGenderList(this);" />
+    <input type="button" value="Generate" onclick="generateName();" />
+    <br> Names:
+    <div id="dNamesOutput">[Names Here]</div>
+    <br> Last Names:
+    <div id="dLastNamesOutput">[Last Names Here]</div>
+    <br> Generated Names:
+    <div id="dGeneratedNamesOutput">[Generated Names Here]</div>
+
+    <script>
+        // 1. Create Arrays
+        var aMaleNames = ["Jon", "Luke", "Alan"];
+        var aFemaleNames = ["Sarah", "Liz", "Chloe"];
+        var aLastNames = ["Smith", "Doe", "White", "Snow", "Wicks", "Johnson"];
+        var aRandomlyGeneratedNames = [];
+        var selectedGender = "Female";
+
+        // When the script loads, run this function
+        printLastName();
+        switchGenderList();
+
+        // Generate Names function 
+        // Select a random name from selected gender, and a random last name. 
+        // Then it will add it to the list of generated names (array)
+        function generateName() {
+            // First Name
+            var first = "";
+
+            // Which name was selected
+            if (selectedGender == "Male") {
+                // use male name array
+                var randIndex = Math.floor(Math.random() * aMaleNames.length);
+
+                first = aMaleNames[randIndex];
+            } else if (selectedGender == "Female") {
+                // use female name array
+                var randIndex = Math.floor(Math.random() * aFemaleNames.length);
+
+                first = aFemaleNames[randIndex];
+            }
+
+            // Last Name
+            var last = "";
+            last = aLastNames[Math.floor(Math.random() * aLastNames.length)];
+
+            // Add generated name to array
+            aRandomlyGeneratedNames.push(first + " " + last);
+
+            // Output generated names
+            //betterOutputArrayToDiv( aRandomlyGeneratedNames, 
+            //document.getElementById("dGeneratedNamesOutput") );
+            betterOutputArrayToDivREVERSE(aRandomlyGeneratedNames,
+                document.getElementById("dGeneratedNamesOutput"));
+        }
+
+        // Print last names
+        function printLastName() {
+            // Call our better output function to output the names
+            var lastDiv = document.getElementById("dLastNamesOutput");
+            betterOutputArrayToDiv(aLastNames, lastDiv);
+            //betterOutputArrayToDiv( aLastNames, document.getElementById("dLastNamesOutput") );
+        }
+
+
+        // When the switch gender button is pressed this function will be called, it will change the list of names shown on screen
+        function switchGenderList(theButton) {
+            // This will make sure there is an element to refer to before trying to access properties of it
+            if (theButton != null) {
+                theButton.value = "Switch to " + selectedGender;
+            }
+
+            if (selectedGender == "Female") {
+                // Show the male names 
+                //outputArrayToDiv(aMaleNames);
+                betterOutputArrayToDiv(aMaleNames, document.getElementById("dNamesOutput"));
+
+                // Switch the selected gender
+                selectedGender = "Male";
+            } else if (selectedGender == "Male") {
+                // Show the female names 
+                //outputArrayToDiv(aFemaleNames);
+                betterOutputArrayToDiv(aFemaleNames, document.getElementById("dNamesOutput"));
+
+                // Switch the selected gender
+                selectedGender = "Female";
+            }
+        }
+
+        // Will create a function to output an array that is passed to it
+        function outputArrayToDiv(nameArray) {
+            // Clear output before continuing 
+            document.getElementById("dNamesOutput").innerHTML = "<hr>";
+
+            // To output an array, we refer to the length property
+            var index = 0;
+            while (index < nameArray.length) {
+                // Output to div
+                document.getElementById("dNamesOutput").innerHTML =
+                    document.getElementById("dNamesOutput").innerHTML +
+                    nameArray[index] + "<br><hr>";
+
+                // Increment
+                index++;
+            }
+        } // end outputArrayToDiv
+
+        // function to output an array to a div
+        function betterOutputArrayToDiv(nameArray, theDiv) {
+            // Clear output before continuing 
+            theDiv.innerHTML = "<hr>";
+
+            // To output an array, we refer to the length property
+            var index = 0;
+            while (index < nameArray.length) {
+                // Output to div
+                theDiv.innerHTML = theDiv.innerHTML + nameArray[index] + "<br><hr>";
+
+                // Increment
+                index++;
+            }
+        } // end betterOutputArrayToDiv
+
+        // function to output an array to a div
+        function betterOutputArrayToDivREVERSE(nameArray, theDiv) {
+            // Clear output before continuing 
+            theDiv.innerHTML = "<hr>";
+
+            // Reverse output of an array... decrement instead of increment
+            for (var index = nameArray.length - 1; index >= 0; index--) {
+                // Output to div
+                theDiv.innerHTML = theDiv.innerHTML + nameArray[index] + "<br><hr>";
+            }
+        } // end betterOutputArrayToDiv
+    </script>
+
+</body>
+
+</html>

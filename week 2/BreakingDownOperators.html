@@ -1,0 +1,127 @@
+<html>
+	<body>
+		<h1>Operators</h1>
+		
+		<script>
+			// =, +, -: These of Operators
+			// Operators
+			// Functionality based on the left hand side(LHS) and right hand side (RHS) values/statements
+			
+			var gasTankInLitres = 200; // The Assignment Operator we use the '=' symbol
+									// The LHS Is the variable that is assigned the value specified on the right hand side
+			const PI = 3.14159; 
+			//PI = 5;
+			
+			// +, -: Simple Math operators (Addition, Subtraction)
+			// Depending on values on LHS and RHS the functionality of symbols such as '+' differ. 
+			
+			// What are some other operators?
+			// Multiplication (*) Note: 5 * 10 not 5 x 10.
+			var z = 5 * 7;
+			console.log(z);
+			
+			// Division (/): Note // is not double division, its a comment
+			var y = 10 / 2;
+			console.log(y);
+			
+			// Combining use of these mathimatical operations can be done just as you would in traditional math
+			// Order of operations still takes presidence in your code
+			var x = (5 * 10) + 10;
+			console.log(x);
+			
+			// Pretty Straight forward but it is worth noting
+			
+			// Modulus (%)
+			// Calculate the remainder of a division operation
+			var remainder = 12 % 5;
+			console.log(remainder);
+			
+			// Logical Operators
+			// Greater-Than (>), Less-Than (<)
+			// These symbols return a boolean value based on the LHS and RHS condition for that specified operator
+			var ageToSeeMovie = 18;
+			var userAge = 10;
+			var result1 = (userAge > ageToSeeMovie); // false
+			var result2 = (userAge < ageToSeeMovie); // true
+			console.log(result1);
+			console.log(result2);
+			
+			// Equals Symbol (==)
+			var result3 = (4 == 4);
+			console.log(result3);
+			
+			// Greater-Than Or Equal Operator
+			var result4 = 18 >= ageToSeeMovie; // Old enough ?
+			console.log(result4);
+			// Depending on your brain and how it prefers to approach a problem 
+			// you can alter how you might perform a boolean expression, using a combination of logical operators and LHS/RHS values
+			/* 
+				Both do the same thing and include the 18 year old value in the true/false result
+				18 >= 18 
+				18 > 17
+			*/
+			// Less-Than Or Equal Operator
+			// NOTE: Spacing is important when writing code in general, and even more important when it comes to writing operators. Inluding the space between something like <= is the difference between functional code and a syntax error
+			var result5 = (16 <= 16);
+			
+			// Not Equal Operator 
+			// It returns true if the LHS and RHS are not equal
+			var age = 65;
+			var result6 = (age != 65);
+			console.log(result6);
+			
+			// There are some silly things that Javascript does/allows
+			//var result7 = (4 == 4);
+			var result7 = (4 == "4");
+			console.log(result7); // True
+			
+			// Strict '==='
+			var result8 = (4 === "4");
+			console.log(result8); // False
+			
+			// Stict not Equal 
+			var result9 = (4 != "5");
+			console.log(result9);
+			
+			result9 = (4 !== "5");
+			console.log(result9);
+			
+			// Logical Operators are utilized in boolean expressions
+			// Comparison Operators
+			// && (AND)   ||  (OR)
+			
+			userAge = 30;
+			userGender = "Female";
+		
+			// AND (&&) returns TRUE if BOTH the LHS and RHS values are true
+			var EligableForInsurance = ( userGender == "Female" && userAge >= 25 );
+			console.log(EligableForInsurance);
+			
+			userAge = 16;
+			userGender = "Female";
+		
+			// OR (||) Returns TRUE as long as one or both of the values on the LHS or RHS are true
+			// Returns false when Both LHS and RHS are false
+			EligableForInsurance = ( userGender == "Female" || userAge >= 25 );
+			console.log(EligableForInsurance);
+			
+			// A Boolean
+			var skyIsBlue = true;
+			
+			
+			/* In Summary: 
+				-The operators all behave using Left Hand Side and Right Hand Side association. 
+				-Depending on datatypes on either side, results may differ. 
+				-You can combine operators to perform based on how YOU inturpret a solution to a problem.
+				-These are all tools for you to use when solving problems. 
+				-Often there is no "one" way to approach a problem, so long as the logic results the way you intend			
+			*/
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 4</title>
+        <style>
+            body 
+            {
+                background-color: tomato;
+                color: black;
+                text-align: center;
+            }
+
+            .tempStyle {
+                font-size: 48px;
+                font-weight: bolder;
+                padding: 5px;
+                color: darkblue;
+                background-color: peachpuff;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Temperature Converter</h1>
+
+        <!-- Output -->
+        <p class="tempStyle" id="pTemperature">
+            [Temperature Here]
+        </p>
+
+        <!-- User Input -->
+        <div>
+            Enter Temperature: 
+            <br><br>
+
+            <!-- Textbox -->
+            <input type="number" id="tbInput" placeholder="74" />
+            <br><br>
+
+            <!-- Buttons -->
+            <input type="button" value="Convert To Fahrenheit" onclick="convertToFahrenheit();"/>
+            <input type="button" value="Convert To Celcius" onclick="convertToCelsius();" />
+
+        </div>
+
+        <!-- Script -->
+        <script>
+            // Helper Function to read and convert the value in the textfield on the webpage
+            // Returns the number entered in the textbox
+            function readValueFromTextbox()
+            {
+                // Locate the input element we want to read from and access the value property
+                // Also Convert to number to avoid NaN error
+                return parseFloat( document.getElementById("tbInput").value );
+            }
+
+            // Function called by the "Convert to Fahrenheit" button
+            function convertToFahrenheit()
+            {
+                // call the helper function to read the textbox value
+                var cel = readValueFromTextbox();
+
+                // convert using the user input
+                var fah = (cel * (9/5)) + 32;
+
+                // round the number
+                fah = Math.round( fah );
+
+                // call the function to handle the output
+                document.getElementById("pTemperature").innerHTML = fah + "°F";
+
+            }
+
+            // Function called by the "Convert to Celsius" button
+            function convertToCelsius()
+            {
+                // call the helper function to read the textbox value
+                var fah = readValueFromTextbox();
+
+                // convert using the input above
+                var cel = (fah - 32) * (5/9);
+
+                // round the number
+                cel = Math.round( cel );
+
+                // call the function to handle the output
+                document.getElementById("pTemperature").innerHTML = cel + "°C";
+            }
+
+        </script>
+    </body>
+</html>

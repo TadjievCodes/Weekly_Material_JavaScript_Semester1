@@ -1,0 +1,49 @@
+<!--
+Name:		Daniel Malnati
+Date:		January, 2019
+Purpose:	Prompt for a two integers and do arithmetic operations and write them to the page
+Resource:	Math functions
+https://www.w3schools.com/js/js_math.asp
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Arithmetic</title>	
+		<script>
+		alert("Welcome to the Arithmetic Operations Calculator");
+		
+		//Declare variables to hold user input using prompts
+		var num1 = prompt("1. Enter a number", "3");		
+		var num2 = prompt("2. Enter a number", "6");
+		
+		//Convert the string input to numeric
+		num1 = parseInt(num1);
+		num2 = parseInt(num2);
+		
+		//Calculate arithmetic on the integers
+		var sum = num1 + num2;
+		var difference = num1 - num2;
+		var product = num1 * num2;
+		var quotient = num1 / num2;
+		var remainder = num1 % num2;
+		var average = (num1 + num2) / 2.0;
+		var distance = Math.abs(num1 - num2);
+		var max = Math.max(num1, num2);
+		var min = Math.min(num1, num2);
+				
+		//Output the arithmetic
+		//Controlling the length of decimals in output Chapter 30
+		document.write("The sum is " + sum + "<br>");
+		document.write("The difference is " + difference + "<br>");
+		document.write("The product is " + product + "<br>");
+		document.write("The quotient is " + quotient + "<br>");
+		document.write("The remainder is " + remainder + "<br>");
+		document.write("The average is " + average.toFixed(2) + "<br>");
+		document.write("The distance is " + distance + "<br>");
+		document.write("The maximum is " + max + "<br>");
+		document.write("The minimum is " + min + "<br>");
+		</script>
+	</head>
+	<body>			
+	</body>
+</html>

@@ -1,0 +1,115 @@
+<html>
+    <h1>ANOTHER LOOP?</h1>
+    <body>
+        <script>
+            /*
+                (FOR LAB)
+                Name: Daniel Malnati
+                Date: Jan 2020
+                Purpose: Lab 1 - Shopping Cart 2020
+            */
+            
+            // This is a normal while loop, looping a certain number of times, based on control variable and a max number of loop value
+            var counter = 0;        // 1. Loop Control
+            while (counter < 10)    // 2. Loop Condition
+            {
+                // Repeat this code
+                console.log(counter);
+                counter++;          // 3. Modify Loop Control Var
+            }
+
+            //alert();
+            console.log("Now the other loop");
+
+            // for (control variable; condition; increment/dec)
+            for (var counter = 0; counter < 10; counter++)
+            {
+                //alert("Hi number: " + counter);
+                console.log(counter);
+            }
+            console.log("Another loop");
+
+            var numberOfTimesToLoop = 20;
+            for (var i = 1; i <= numberOfTimesToLoop; i++)
+            {
+                console.log(i);
+            }
+
+            // Javascript is very forgiving, unlike other languages where you CANNOT access a loop control variable that was defined in a for loop OUTSIDE of the scope of the loop
+            console.log("The Last value of 'i' was: " + i);
+
+            /*
+                String is a collection of characters 
+
+                var greeting = "Welcome";
+
+                        String
+                    index | value 
+                    -------------
+                    0   |   W
+                    1   |   e
+                    2   |   l
+                    3   |   c
+                    4   |   o
+                    5   |   m
+                    6   |   e
+
+                    0   |   G
+                    1   |   r
+                    2   |   e
+                    3   |   e
+                    4   |   t
+                    5   |   i
+                    6   |   n
+                    7   |   g
+                    8   |   s
+            */
+            var greeting = "Greetings";
+            //var sizeOfGreeting = 7;
+            //var firstIndexOfGreeting = 0;
+            //var lastIndexOfGreeting = 6;
+
+            //window.alert() // accessing a function using the inatance of the window 'Object'
+
+                // We can access functions and properties using an instance of the 'String Object'
+            console.log( greeting.charAt(0) ); // W
+            console.log( greeting.charAt(3) ); // c
+            console.log( greeting.charAt(6) ); // e
+
+            console.log("Length of greeting: " + greeting.length); 
+
+            console.log( greeting.toLowerCase() );
+            console.log( greeting.toUpperCase() );
+
+            /*
+            userInput.toLowerCase() == "yes"
+            "yes"
+            "YES"
+            "yEs"
+            "Yes"
+            */
+
+            var newWord = "";
+            for (var i = 0; i < greeting.length; i++)
+            {
+                //console.log( greeting.charAt(i) );
+
+                // If Even, convert letter to uppercase
+                if (i % 2 == 0)
+                {
+                    newWord = newWord + greeting.charAt(i).toUpperCase();
+                }
+                else
+                {
+                    newWord = newWord + greeting.charAt(i).toLowerCase();
+                }
+
+
+            }
+
+            console.log(newWord);
+
+
+        </script>
+    </body>
+</html>

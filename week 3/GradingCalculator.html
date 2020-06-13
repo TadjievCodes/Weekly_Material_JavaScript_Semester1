@@ -1,0 +1,127 @@
+<html>
+	<body>
+		<h1>Grades</h1>
+		<script>
+			// Accept 4 course grades (% format) from the user 
+			// Calculate the average for those 4 courses
+			// Using that average we will calculate their letter grade 
+			
+			// The grades
+			var mark1 = 0;
+			var mark2 = 0; 
+			var mark3 = 0;
+			var mark4 = 0;
+			
+			// Retrieve User Input
+			mark1 = prompt("Enter the mark(%) for course 1: ", 66.7);
+			mark2 = prompt("Enter the mark(%) for course 2: ", 78.0);
+			mark3 = prompt("Enter the mark(%) for course 3: ", 72.8);
+			mark4 = prompt("Enter the mark(%) for course 4: ", 85.7);
+			
+			// Note: you can use these functions all in one statement
+			//mark1 = parseFloat( prompt("Enter the mark(%) for course 1: ", 66.7) );
+			
+			// Secret super unknown step 
+			// Convert to numbers
+			mark1 = parseFloat(mark1); 
+			mark2 = parseFloat(mark2);
+			mark3 = parseFloat(mark3);
+			mark4 = parseFloat(mark4);
+			
+			// Average (sum / totalNumbersAdded)			
+			// Sum
+			var sum = mark1 + mark2 + mark3 + mark4;
+			console.log("Sum is: " + sum);
+			
+			// Average 
+			var average = sum / 4; // Hardcoded 4 in here, if i wanted to do 6 courses, 4 would need to change
+			console.log("Average (nR): " + average);
+			
+			// Round the Average
+			average = Math.round(average);
+			
+			console.log("Average (rounded): " + average);
+			
+			// Associate letter grade
+			/*
+				A+ 	 90 and above
+				A  	 80-89
+				B+   75-79
+				B	 70-74
+				C+	 65-69
+				C	 60-64
+				D+	 55-59
+				D	 50-54
+				F	 0-49
+			*/
+			
+			var letterGrade = "Error";
+			
+			// Assign the grade based on average
+			if ( average >= 90 ) 
+			{
+				letterGrade = "A+";
+				message = "Perfect! Or.. pretty close to it";
+			}
+			else if ( average >= 80 ) 
+			{
+				letterGrade = "A";
+				message = "Great Work!";
+			}
+			else if ( average >= 75 ) 
+			{
+				letterGrade = "B+";
+				message = "Slightly above average job, very cool";
+			}
+			else if ( average >= 70 ) 
+			{
+				letterGrade = "B";
+				message = "You are an average person";
+			}
+			else if ( average >= 65 ) 
+			{
+				letterGrade = "C+";
+				message = "You could do better";
+			}
+			else if ( average >= 60 ) 
+			{
+				letterGrade = "C";
+				message = "Im not toooo disappointed in you";
+			}
+			else if ( average >= 55 ) 
+			{
+				letterGrade = "D+";
+				message = "Wow, this is disapointing";
+			}
+			else if ( average >= 50 ) 
+			{
+				letterGrade = "D";
+				message = "To be honest I wish you failed";
+			}
+			else
+			{
+				letterGrade = "F";
+				message = "You are the worst";
+			}
+			
+			// Log to console
+			console.log("Letter Grade is: " + letterGrade);
+			
+			document.write("Average is: " + average + "%<br>");
+			document.write("Letter Grade: " + letterGrade + "<br>");
+			document.write(message);
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+

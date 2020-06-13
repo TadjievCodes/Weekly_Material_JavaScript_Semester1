@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- The Dropdown -->
+    <select id="ddMenuItems">
+            <option selected>Nothing</option>
+        </select>
+
+    <select id="ddRating">
+            <option selected>Nothing</option>
+        </select>
+
+    <select id="ddQuantity">
+            <option selected>Nothing</option>
+        </select>
+
+    <!-- Javascript -->
+    <script>
+        // Reference to the element on the webpage, stored in a variable 
+        var menuSelector = document.getElementById("ddMenuItems");
+        var ratingsSelector = document.getElementById("ddRating");
+        var ddQuantitySelector = document.getElementById("ddQuantity");
+
+        var menuItems = ["Hamburger", "Fries", "Soda", "Pizza", "Pancakes", "Salad"];
+
+        var ratings = ["5 Stars", "4 Stars", "3 Stars", "2 Stars", "1 Star", "This item was awful!"];
+
+        // Call the function
+        populateDropDown(menuItems, menuSelector);
+
+        populateDropDown(ratings, ratingsSelector);
+
+        populateDropDownWithRange(1990, 2020, ddQuantitySelector);
+
+        /*
+            Accepts 2 parameters: 
+            theArray: An array of values you wish to populate the element with (specifically select)
+            theElement: A variable containing the reference to the element you wish to populate
+        */
+        function populateDropDown(theArray, theElement) {
+            // Clear out anything in the dropdown
+            theElement.innerHTML = "";
+
+            // Loop thrugh the array, for every value, create an element and add it to the drop down
+            for (var i = 0; i < theArray.length; i++) {
+                // Create Element
+                var tempOption = document.createElement("option");
+
+                // Modify the Element
+                tempOption.innerText = theArray[i];
+
+                if (i == theArray.length - 1) // Target last in array
+                {
+                    tempOption.selected = true;
+                }
+
+                // Add to the dropdown element
+                theElement.appendChild(tempOption);
+
+            }
+
+        }
+
+        function populateDropDownWithRange(startingNumber, endingNumber, theElement) {
+            theElement.innerHTML = ""; // Clear the dropdown
+
+            // Start from the starting number until reaching the ending number
+            for (var i = startingNumber; i <= endingNumber; i++) {
+                // Create Element
+                var tempElement = document.createElement("option");
+
+                // Modify 
+                tempElement.innerText = i;
+                tempElement.value = i;
+
+                // Add to dropdown
+                theElement.appendChild(tempElement);
+            }
+        }
+    </script>
+</body>
+
+</html>

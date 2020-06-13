@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Arrays Introduction</title>
+</head>
+
+<body>
+    <h1>Arrays Practice</h1>
+    <div id="output"></div>
+
+    <div id="averageDisplay"></div>
+
+
+    <script>
+        //1.Declare empty array with no values in it
+        var fruits = [];
+        //3.Assign new values so we have 6 values with index starting from 0
+        fruits[0] = "Grapes";
+        fruits[1] = "Mango";
+        fruits[2] = "Strawberry";
+        fruits[3] = "Kiwi";
+        fruits[4] = "Cherry";
+        fruits[5] = "Avocado";
+
+        console.log(fruits);
+        // The element we want to output to (div) a Global Variable
+        var outputElement = document.getElementById("output");
+        var averageDisplay = document.getElementById("averageDisplay");
+
+        //4. here we add new elements to the front of the array.the order matters here as if we added after the loop it would be
+        //on the console.log display but not on the window browser display as loop would run first
+        fruits.unshift("Banana", "Apple", "Orange", "Grape", "Lemon");
+
+
+        //2.Print the array and it's length to the window through innerHTML
+        for (var index = 0; index < fruits.length; index++) {
+            // output each item in the array using the loop control variable as the index
+            outputElement.innerHTML = outputElement.innerHTML +
+                fruits[index] + "<br><hr>";
+            console.log(index);
+        }
+
+
+        // Here we add after the loop but in the next ouput it still captures it and dispaly it 
+        fruits.unshift("Banana", "Apple", "Orange", "Grape", "Lemon");
+        console.log(fruits);
+
+        // 5.Outputs all elments as a single string, split by a comma and no spaces. (Good for debugging ugly for real use)
+        outputElement.innerHTML += "<br>" + fruits.toString() + "<br>";
+
+        //6.For loop to mutate the String elements in the following way:
+        //a. Convert every other element to all upper case (that is, elements stored at an even-numbered index)
+        //b. Convert every other element to all lower case (that is, elements stored at an odd-numbered index)
+        // How to find odd or even
+        /*
+        for (var index = 0; index < fruits.length; index++) { //>= num % 2 == 0
+            if ((index + 1) % 2 == 0) {
+                outputElement.innerHTML += "<br>" + fruits.toString() + "<br>" + fruits.map(a => a.toUpperCase());
+            } else {
+                outputElement.innerHTML += "<br>" + fruits.toString() + "<br>" + fruits.map(a => a.toLowerCase());
+            }
+
+            //toString() displays on one line and fruits.map is the array in-built function displays all the indexes of array n turns them to uppercase
+            //through uppercase function
+            //outputElement.innerHTML += "<br>" + fruits.length + fruits.toString() + "<br>" + fruits.map(a => a.toUpperCase());
+
+        } //Closing For Loop bracket 
+*/
+
+        for (var index = 0; index < fruits.length; index++) {
+            //var theDiv = document.getElementById("output");
+            var element = fruits[index];
+            if ((index + 1) % 2 == 0) {
+                outputElement.innerHTML += element.toLowerCase() + "<br>";
+            } else {
+                outputElement.innerHTML += element.toUpperCase() + "<br>";
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        //7.Print the array and its length.
+        for (var index = 0; index < fruits.length; index++) {
+            // output each item in the array using the loop control variable as the index
+            outputElement.innerHTML = outputElement.innerHTML +
+                fruits[index] + "<br><hr>";
+            console.log(index);
+        }
+
+
+        //8. Declare a new empty array
+
+        var fruitCode = [];
+
+        //9. Use a for loop to create a code for each type of fruit, where the code is the first letter of the fruit.
+        // Iterate through the fruit array, and use charAt[0] to get the first letter of the fruit and store it in
+        // the new array.
+        //charAt[0]
+        for (let i = 0; i < fruits.length; i++) {
+            fruitCode[i] = fruits[i].charAt(0);
+        }
+        //10. Print the new array and it's length
+        outputElement.innerHTML += fruitCode + "<br>";
+
+
+        //!New Exercise array numbers
+
+        //For the output
+        //let outputElement = document.getElementById("output"); Otput has already been declared no need twice
+
+        //1.Declaring an array with number
+        let numberArrays = [10, 58, 47, 12, 5, 4, 8, -7, 521, -99];
+        let totalNumber = 10 + 58 + 47 + 12 + 5 + 4 + 8 + -7 + 521 + -99;
+
+        // this will ensure you have a numeric computation rather than string concat
+        // averageDisplay.innerHTML = Number(averageDisplay.innerHTML) + numberArrays.length;
+
+        function findAverage() {
+            var average = 0;
+            var sum = 0;
+
+            for (var counter = 0; counter < numberArrays.length; counter++) {
+                sum += numberArrays[counter];
+            }
+            average = totalNumber / numberArrays.length;
+            return average;
+        }
+        let averageNum = findAverage();
+
+        // this will ensure you have a numeric computation rather than string concat
+        averageDisplay.innerHTML = Number(averageDisplay.innerHTML) + (averageNum);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
+        //1.Declaring an array with number
+        let numberArrays = [10, 58, 47, 12, 5, 4, 8, -7, 521, -99];
+        let totalNumber = 10 + 58 + 47 + 12 + 5 + 4 + 8 + -7 + 521 + -99;
+        //2.Print the array and its length.
+        outputElement.innerHTML += numberArrays.length;
+
+        //3.Find and output the average of the array.
+
+        function findAverage(a, b) {
+            //totalNumber = a;
+            return a / b;
+        }
+        let averageNum = findAverage(totalNumber, numberArrays.length);
+        outputElement.innerHTML += Math.round(averageNum);
+
+
+       */
+
+
+
+        //New arrow function
+        /*
+
+        console.log(totalNumber);
+        console.log(numberArrays.reduce((a, b) => a + b, 0));
+
+
+        */
+        /*
+                var total = 0;
+                for (var i = 0; i < numberArrays.length; i++) {
+                    total += numberArrays[i];
+                }
+                var avg = total / numberArrays.length;
+                outputElement.innerHTML += numberArrays;
+
+                
+        */
+
+        /*
+           let numberArrays = [10, 58, 47, 12, 5, 4, 8, -7, 521, -99];
+           let totalNumber = 10 + 58 + 47 + 12 + 5 + 4 + 8 + -7 + 521 + -99;
+
+           console.log(totalNumber)
+           console.log(numberArrays.reduce((a, b) => a + b, 0))
+
+         */
+
+        /* Adils verage function
+
+        var Numbers = [10, 58, 47, 12, 5, 4, 8, -7, 521, -99];
+
+
+        function printValueWNote(string, value) {
+
+            averageDisplay.innerHTML += string + " : " + value + "<br>";
+        }
+
+        function averageOfArray(array) {
+            var average = 0;
+            var sum = 0;
+            for (var index = 0; index < array.length; index++) {
+                //var element = array[index];
+                //sum += element;
+                sum += array[index];
+            }
+            average = sum / array.length;
+            return average;
+        }
+
+
+        printValueWNote("Average", averageOfArray(Numbers));
+        printValueWNote("Maximum", Math.max.apply(null, Numbers));
+        printValueWNote("Minimum", Math.min.apply(null, Numbers));
+
+
+
+
+
+       */
+
+
+        /*
+
+                var NumbersAll = [10, 58, 47, 12, 5, 4, 8, -7, 521, -99];
+
+
+                function printValueWNote(string, value) {
+
+                    averageDisplay.innerHTML += string + " : " + value + "<br>";
+                }
+
+                function averageOfArray() {
+                    var average = 0;
+                    var sum = 0;
+                    for (var index = 0; index < NumbersAll.length; index++) {
+                        //var element = array[index];
+                        //sum += element;
+                        sum += NumbersAll[index];
+                    }
+                    average = sum / NumbersAll.length;
+                    return average;
+                }
+
+
+                printValueWNote("Average", averageOfArray(NumbersAll));
+                printValueWNote("Maximum", Math.max.apply(null, NumbersAll));
+                printValueWNote("Minimum", Math.min.apply(null, NumbersAll));
+
+
+        Think to alter this code so it with NumbersAll variable
+        */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*// function to output an array to a div
+        function betterOutputArrayToDiv(nameArray, theDiv) {
+            // Clear output before continuing 
+            theDiv.innerHTML = "<hr>";
+
+            // To output an array, we refer to the length property
+            var index = 0;
+            while (index < nameArray.length) {
+                // Output to div
+                theDiv.innerHTML = theDiv.innerHTML + nameArray[index] + "<br><hr>";
+
+                // Increment
+                index++;
+            }
+        } // end betterOutputArrayToDiv
+        */
+    </script>
+</body>
+
+</html>

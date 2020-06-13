@@ -1,0 +1,74 @@
+<!--
+Name:		Daniel Malnati
+Date:		January, 2019
+Purpose:	Prompt for a user for four marks and evaluate his average
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Print Shop</title>	
+		<script>
+		alert("Welcome to the Print Shop");
+	
+		//Get the number of copies to print
+		var copies = prompt("Number of copies to print? (1 - 5,000):", "766");
+		copies = parseInt(copies);
+		
+		//Check number of copies and assign price per copy
+		var pricePerCopy = 0.0;
+		
+		//Selection ruling out the top cases first
+		if (copies >= 1000)
+		{
+			pricePerCopy = 0.2;
+		}
+		else if (copies >= 750)
+		{
+			pricePerCopy = 0.23;
+		}
+		else if (copies >= 500)
+		{
+			pricePerCopy = 0.25;
+		}
+		else if (copies >= 100)
+		{
+			pricePerCopy = 0.28;
+		}
+		else 
+		{
+			pricePerCopy = 0.30;
+		}
+		
+		//Selection ruling out the lower cases first
+		if (copies <= 99)
+		{
+			pricePerCopy = 0.3;
+		}
+		else if (copies <=449)
+		{
+			pricePerCopy = 0.28;
+		}
+		else if (copies <= 749)
+		{
+			pricePerCopy = 0.25;
+		}
+		else if (copies <= 1000)
+		{
+			pricePerCopy = 0.23;
+		}
+		else 
+		{
+			pricePerCopy = 0.20;
+		}
+		
+		//Calculate total price for the copies 
+		var totalPrice = copies * pricePerCopy;
+		
+		//Output the total price
+		document.write("Price per copy = $" + pricePerCopy.toFixed(2) + "<br>");
+		document.write("Total price = $" + totalPrice.toFixed(2) + "<br>");
+		</script>
+	</head>
+	<body>			
+	</body>
+</html>

@@ -1,0 +1,138 @@
+<html>
+	<body>
+		<h1>
+			ROCK PAPER SCISSORS
+		</h1>
+		<script>
+			// ROCK PAPER SCISSORS
+			
+			// Rock 	== 1
+			// Paper 	== 2 
+			// Scissors == 3
+			const ROCK 		= 1;
+			const PAPER		= 2;
+			const SCISSORS	= 3;
+			
+			// \ is the "escape" character, these are used in combination with other characters to alter functionality of that character, inside of a string:    \" and \n
+			//var str = "The man was quoted saying  \"  hello world! \" and the people were amazed";
+			
+			var promptMessage = "make your selection: \n1 - Rock \n2 - Paper \n3 - Scissors";
+
+
+			// Ask the user to enter the number of times they would like to play
+			//var numberOfTimesToExecute = 0;
+			//numberOfTimesToExecute = parseInt( prompt("How many rounds would u like to play?", 3) );
+
+
+			var counter = 0;
+			// Start of Loop
+			//while (counter < numberOfTimesToExecute)
+			do
+			{
+				// Ouptut representing Where we are in the number of repetitions
+				//alert("Round: " + (counter + 1) + " of " + numberOfTimesToExecute);
+				alert("Round: " + (counter + 1));
+
+				// The users Input 
+				var playerInput = parseInt( prompt("Player " + promptMessage) );
+
+				// Another users input 
+				//var computerInput = parseInt( prompt("Player 2 " + promptMessage) );
+
+				var computerInput = Math.floor( Math.random() * (4 - 1) + 1 );
+				
+				// Compare the users choices based on the rules
+				var result = "Error";
+				
+				
+				if (playerInput == ROCK)
+				{
+					// Rock conditions 
+					if (computerInput == ROCK)
+					{
+						result = "Draw";
+					}
+					else if (computerInput == PAPER)
+					{
+						result = "Computer wins";
+					}
+					else if (computerInput == SCISSORS)
+					{
+						result = "Player wins";
+					}
+					else
+					{
+						result = "Invalid input from computer";
+					}
+					
+				}
+				else if (playerInput == PAPER)
+				{
+					// Paper conditions 
+					if (computerInput == ROCK)
+					{
+						result = "Player wins";
+					}
+					else if (computerInput == PAPER)
+					{
+						result = "Draw";
+					}
+					else if (computerInput == SCISSORS)
+					{
+						result = "Computer wins";
+					}
+					else
+					{
+						result = "Invalid input from computer";
+					}
+				}
+				else if (playerInput == SCISSORS)
+				{
+					// Scissors conditions 
+					if (computerInput == ROCK)
+					{
+						result = "Computer Wins";
+					}
+					else if (computerInput == PAPER)
+					{
+						result = "Player Wins";
+					}
+					else if (computerInput == SCISSORS)
+					{
+						result = "Draw";
+					}
+					else
+					{
+						result = "Invalid input from computer";
+					}
+				}
+				else 
+				{
+					// An invalid Input (because the previous if's were not triggered
+					result = "Player entered an invalid selection";
+				}
+
+				// Display Results
+				alert("Player: " + playerInput + 
+				"\nComputer: " + computerInput + 
+				"\nResult: " + result);
+				console.log(playerInput);
+				console.log(computerInput);
+				
+				// TODO: another approach, ask the user if they would like to play again, only exit when they say no
+
+				// HEY IDIOT: LOOP CONTROL VARIABLE 
+				counter++;
+			
+			} while( confirm("Would you like to play again?") );
+
+			// TODO: Output the result of all rounds, 
+			// use some counters for player score and computer score
+
+			//console.log(result);			
+			//document.write(result);
+			
+			
+		</script>
+	</body>
+</html>

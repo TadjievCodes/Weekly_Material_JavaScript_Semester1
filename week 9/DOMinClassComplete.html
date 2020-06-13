@@ -1,0 +1,110 @@
+<html>
+
+<body>
+    <div id="drinks">
+        <p>Coffee</p>
+        <p>Tea</p>
+        <p>Milk</p>
+    </div>
+
+    <div id="fruit">
+        <p>Apple</p>
+        <p>Orange</p>
+        <p>Banana</p>
+    </div>
+
+    <script>
+        // Navigating the DOM's various list of nodes 
+        // The hard way. the tedious way, whatever
+        var node = null;
+
+        // html element or 'node'
+        node = document.childNodes[0];
+        console.log(node);
+
+        // The head node, we did not add this element in our HTML, however, the html element clearly has its own set of rules/internal structure that it creates, without us necessarily knowing
+        // node = document.childNodes[0].childNodes[0];
+
+        // body node
+        node = document.childNodes[0].childNodes[1];
+        console.log(node);
+
+        // #text some garbage formatting text node
+        node = document.childNodes[0].childNodes[1].childNodes[0];
+        console.log(node);
+
+        // The Drinks Div
+        node = document.childNodes[0].childNodes[1].childNodes[1];
+        console.log(node);
+
+        // The array of nodes
+        console.log(document.childNodes[0].childNodes[1].childNodes);
+
+        // The type of a specific node
+        console.log(document.childNodes[0].childNodes[1].childNodes[0].nodeType);
+
+        // The Drinks Div
+        // The list of nodes inside of the drink div
+        var nodeList = document.childNodes[0].childNodes[1].childNodes[1].childNodes;
+        console.log(nodeList);
+
+        // The node 
+        console.log(node.childNodes);
+
+        // More specific, relationship based navigation in the DOM
+        node = null;
+        node = document.getElementById("fruit");
+        console.log(node);
+
+        // We want to see the previous sibling of the fruit div
+        console.log(node.parentElement);
+
+        // We want to see the previous sibling of the fruit divs previous sibling
+        console.log(node.previousSibling.previousSibling);
+
+        // Access some stuff from the drinks div
+        var nodeAttributeResult = node.previousSibling.previousSibling.hasAttributes("id");
+        console.log(nodeAttributeResult);
+
+        // We want to see the next sibling
+        console.log(node.nextSibling.nextSibling);
+
+        nodeAttributeResult = node.nextSibling.nextSibling.hasAttributes("id");
+        console.log(nodeAttributeResult);
+
+        // Adding an element to the drinks div
+        var drinksDiv = node.previousSibling.previousSibling; // using node from above
+
+        // Array of menu items
+        var menuItems = ["Milkshake", "Espresso", "Latte", "Strawberry Jam"];
+        for (var index = 0; index < menuItems.length; index++) {
+            // Create and add an element to the drinks div
+            var temp = document.createElement("p");
+            //temp.className = "greenStyle";
+
+            if (index % 2 == 0) {
+                temp.style.background = "red";
+                temp.style.color = "yellow";
+            } else {
+                temp.style.background = "green";
+                temp.style.color = "yellow";
+            }
+
+            temp.innerText = menuItems[index];
+            drinksDiv.appendChild(temp);
+        }
+
+        // Create a p element
+        var newElement = document.createElement("p");
+
+        newElement.innerText = "Orange Juice";
+
+        // Add element to the parents list of child nodes
+        drinksDiv.appendChild(newElement);
+
+
+        console.log(drinksDiv.childNodes);
+    </script>
+</body>
+
+</html>

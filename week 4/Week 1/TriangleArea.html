@@ -1,0 +1,26 @@
+<!--
+Name:		Daniel Malnati
+Date:		January, 2019
+Purpose:	Prompt for a base and and height and write the area of a triangle to the page
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Triangle Area</title>	
+		<script>
+		alert("Welcome to the Triangle Area Calculator");
+	
+		//Declare variables to hold user input using prompts
+		var base = prompt("Enter a base", "8");		
+		var height = prompt("Enter a height", "12");
+			
+		//Calculate the area of a triangle
+		var area = 1 / 2.0 * parseFloat(base) * parseFloat(height);
+				
+		//Output the area of a triangle
+		document.write("The area of a triangle with base of " + base + " and height of " + height + " is " + area + " cm squared." + "<br>");
+		</script>
+	</head>
+	<body>			
+	</body>
+</html>

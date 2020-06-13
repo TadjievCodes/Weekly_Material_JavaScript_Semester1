@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+</head>
+
+<body>
+    <h1>Arrays Practice</h1>
+    <div id="out"></div>
+    <div id="outputOE"></div>
+    <div id="outputLength"></div>
+    <div id="code"></div>
+    <div id="nums"></div>
+    <div id="numsN"></div>
+    <hr>
+    <div id="doubleArray"></div>
+    <div id="reverse"></div>
+    <div id="random"></div>
+    <script>
+        //Practice By ADil
+        // blank arrays 
+        var aFruits = [];
+        var aOddEven = [];
+        var fruitCode = [];
+
+        // some arrays manipulation
+        aFruits.push("Banana", "Apple", "Orange");
+        aFruits.unshift("Grapes", "Lemon");
+
+
+        // the main function to print any array in any div
+
+        function printArrayInDiv(array, theOutputDivId, length) {
+            var theDiv = document.getElementById(theOutputDivId);
+            for (var index = 0; index < array.length; index++) {
+                var element = array[index];
+                theDiv.innerHTML = theDiv.innerHTML + element + "<br>";
+            }
+            // additional print of lenth if it needed
+            if (length === true) {
+                theDiv.innerHTML = theDiv.innerHTML + "Length of the array is : " + array.length + "<br><hr>"
+            } else { // in case we dont need length we still need <hr>
+                theDiv.innerHTML = theDiv.innerHTML + "<hr>";
+            }
+        }
+        // printing array in div "out"
+        printArrayInDiv(aFruits, "out");
+
+        // this function takes two arrays and copy first to create second with particular condition
+        function ArrayOddEven(arrayIn, arrayOut) {
+
+            for (var index = 0; index < arrayIn.length; index++) {
+
+                var elementIn = arrayIn[index];
+
+                if ((index + 1) % 2 == 0) {
+                    arrayOut.push(elementIn.toLowerCase());
+                } else {
+                    arrayOut.push(elementIn.toUpperCase());
+                }
+            }
+            return arrayOut;
+        }
+        // print an arrayOut in div outputOE
+        printArrayInDiv(ArrayOddEven(aFruits, aOddEven), "outputOE");
+
+
+        printArrayInDiv(aFruits, "outputLength", true);
+
+
+        function getCode(arrayIn, arrayOut) {
+            for (var index = 0; index < arrayIn.length; index++) {
+                var element = arrayIn[index];
+                var code = arrayIn[index].charAt(0);
+                arrayOut.push(code);
+            }
+            return arrayOut;
+        }
+
+        printArrayInDiv(getCode(aFruits, fruitCode), "code", true);
+
+        // _____________________________________________________________
+
+        var aNums = [10, 58, 47, 12, 5, 4, 8, -7, 521, -99];
+        printArrayInDiv(aNums, "nums", true);
+
+        function printValueWNote(string, value) {
+            theDiv = document.getElementById("numsN");
+            theDiv.innerHTML = theDiv.innerHTML + string + " : " + value + "<br>";
+        }
+
+        function averageOfArray(array) {
+            var average = 0;
+            var sum = 0;
+            for (var index = 0; index < array.length; index++) {
+                var element = array[index];
+                sum += element;
+            }
+            average = sum / array.length;
+            return average;
+        }
+
+
+        printValueWNote("Average", averageOfArray(aNums));
+        printValueWNote("Maximum", Math.max.apply(null, aNums))
+        printValueWNote("Minimum", Math.min.apply(null, aNums))
+
+        function averageOfLastHalfOfArray(array) {
+            var average = 0;
+            var sum = 0;
+            for (var index = array.length / 2 - 1; index < array.length; index++) {
+                var element = array[index];
+                sum += element;
+            }
+            average = sum / (array.length / 2);
+            return average;
+        }
+        printValueWNote("Average of the last part of a array", averageOfLastHalfOfArray(aNums));
+
+        function newDoubleArray(array) {
+            var doubleArray = [];
+            for (var index = 0; index < array.length; index++) {
+                var element = array[index];
+                doubleArray.push(element * 2)
+            }
+            return doubleArray;
+        }
+        printArrayInDiv(newDoubleArray(aNums), "doubleArray", false);
+
+        // print in reverse div aNums
+        printArrayInDiv(aNums, "reverse")
+
+        function reverseArray(array) {
+
+            var reversedArray = [];
+            var theDiv = document.getElementById("reverse");
+
+            for (var index = 0; index < array.length; index++) {
+                var element = array[index];
+                reversedArray.unshift(element);
+            }
+            return reversedArray;
+        }
+        printArrayInDiv((reverseArray(aNums)), "reverse");
+
+
+
+
+
+        var randomArray = [];
+        console.log(randomArray);
+
+        // typical function to generate random number w/ max and min
+        // copied from mozilla
+        function generateRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        // function add random numbers from 5 to 15 
+        // first parameter for array where you whant to add random nums
+        // second param for declare the quantity of numbers you whant to add
+        function randomingArray(array, length) {
+            for (let index = 0; index < length; index++) {
+                array.push(generateRandomNumber(5, 15));
+            }
+            return array; // function return an array
+        }
+
+        // testing if it works
+        printArrayInDiv(randomingArray(randomArray, 5), "random", true);
+        printArrayInDiv(randomingArray(randomArray, 10), "random", true);
+        printArrayInDiv(randomingArray(randomArray, 15), "random", true);
+    </script>
+</body>
+
+</html>

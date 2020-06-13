@@ -1,0 +1,63 @@
+<!--
+Name:		Daniel Malnati
+Date:		January, 2019
+Purpose:	Calculate the cost of going to the movies, based on age, snack option, coupon option
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Movie Fee</title>	
+		<script>	
+		//Declare variables to hold a user's input of 2 integers, using prompts		/ 
+		var age = prompt("Enter your age", "29");	
+		var snackOption = prompt("Enter A, B, C or D for your snack option:\nA - popcorn and pop\nB - chocolate bar and pop\nC - popcorn and candy and pop\nD - None", "B");
+		var coupon = prompt("Do you have a coupon?", "Yes");
+		
+		var movieFee = 0.0;
+		var snack = 0.0;
+		var coupon = 0.0;
+		
+		//Check the user's admission fee based on his age
+		if(age > 65)
+		{
+			fee = 6;
+		}
+		else if (age > 11)
+		{
+			fee = 8.5;
+		}
+		else
+		{
+			fee = 5.5;
+		}
+		
+		//Check the user's choice of snack choice
+		if (snackOption ==="A")
+		{
+			snack = 7.9;
+		}
+		else if (snackOption === "B")
+		{
+			snack = 6.3;
+		}
+		else if (snackOption === "C")
+		{
+			snack = 8.9;
+		}
+			
+		//Check if user has a coupon
+		if(coupon === "Yes")
+		{
+			coupon = 2;
+		}
+		
+		//Calculate the movie fee
+		fee = fee + snack - coupon;
+			
+		//Output the total cost of going to the movie
+		document.write("Total cost of going to the movie = $" + fee.toFixed(2) + "<br>");		
+		</script>
+	</head>
+	<body>			
+	</body>
+</html>

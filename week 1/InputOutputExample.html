@@ -1,0 +1,61 @@
+
+<html>
+	<body>
+		<h1>Input Output Example</h1>
+		<script>
+			// Create Some variables
+			var userName = "Blank"; // Empty String
+			var userAge = 0; // Default value ofzero
+			var canWatchRMovie = true; // Default to false
+									   // Boolean false = 0 // off
+									   // 		  true = 1  // on
+			
+			// Window Alert to Greet the user
+			window.alert("Welcome to Javascript!"); 
+			
+			// Window Prompt function 
+			// Shows dialog box with a textfield to retreive user input
+			// This function RETURNS a value		
+			userName = window.prompt("Enter your name: ");
+			
+			// Output userName
+			//alert(userName);
+			
+			// Referring to the 'log' function using the console object
+			console.log("Value of User Name: " + userName);
+			
+			// Request users age
+			userAge = prompt("Enter your age: ", 18);
+			//userAge = prompt(18, "Enter your age: "); // Order does matter
+			//        prompt(   param1     ,   param2 )
+			
+			console.log("User Age: " + userAge);
+			
+			// Output type of the variable to console
+			console.log(typeof userAge);
+			//alert(userAge + 10);
+			
+			// Convert string to number
+			var convertedAge = parseInt(userAge); // Converting to whole number
+			//				   parseFloat(num);   // Convert to a decimal number
+			// Providing a string value that contains both text and numbers will result in a NaN value being returned 
+			// NaN - Not a Number
+			
+			// Output type of the variable to console
+			console.log(typeof convertedAge);
+			console.log("Age after conversion: " + convertedAge);
+			
+			// This is where a Type Logic error would come into play, if you didnt convert the string to a number, this would result in the '+' operator concatenating the values instead of adding them together.
+			alert(convertedAge + 10);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

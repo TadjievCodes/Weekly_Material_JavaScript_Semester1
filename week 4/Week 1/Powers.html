@@ -1,0 +1,33 @@
+<!--
+Name:		Daniel Malnati
+Date:		January, 2019
+Purpose:	Prompt for a number and calculate its powers and write them to the page
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Powers</title>	
+		<script>
+		alert("Welcome to the Arithmetic Operations Calculator");
+		
+		//Declare variables to hold user input using prompts
+		var num = prompt("Enter a number", "3");	
+				
+		//Convert string input to numeric
+		num = parseInt(num);		
+		
+		//Calculate powers
+		var square = num ** 2;
+		var cube = num ** 3;
+		var fourth = Math.pow(num, 4);
+				
+		//Output the powers
+		//Controlling the length of decimals in output Chapter 30
+		document.write("The square of " + num + " is " + square + "<br>");
+		document.write("The cube of " + num + " is " + cube + "<br>");
+		document.write("The fourth power of " + num + " is " + fourth + "<br>");
+		</script>
+	</head>
+	<body>			
+	</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <label for="Firstname">First Name:</label>
+            <!-- label for gives it a name to that input type text field -->
+            <input type="text" id="firstName" name="First_name" oninput="firstName()">
+            <!-- here we create a text input -->
+            <label for="lastName">Last Name:</label>
+            <!-- give it a label name Email: -->
+            <input type="text" id="lastName" name="Last_Name">
+
+
+            <select id="ddBirthMonths" onchange="monthChanging(birthMonthSelector,birthDAteSelector)">
+        <option selected>Nothing</option>
+    </select>
+
+            <select id="ddBirthDates">
+        <option selected>Nothing</option>
+    </select>
+
+            <select id="ddBirthYears">
+        <option selected>Nothing</option>
+    </select>
+
+            <button type="submit" onclick="firstName()">Submit Form</button>
+
+        </fieldset>
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <div id="outputArea" style="background-color: violet; padding: 5px;">
+
+
+    </div>
+
+    <script>
+        var birthMonthSelector = document.getElementById("ddBirthMonths");
+        var birthDAteSelector = document.getElementById("ddBirthDates");
+        var birthYearSelector = document.getElementById("ddBirthYears");
+
+        var birthMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+            "November", "December"
+        ];
+
+
+
+
+        function populateDropDownWithRange(startingNumber, endingNumber, theElement) {
+            theElement.innerHTML = ""; // Clear the dropdown
+
+            // Start from the starting number until reaching the ending number
+            for (var i = startingNumber; i <= endingNumber; i++) {
+                // Create Element
+                var tempElement = document.createElement("option");
+
+                // Modify 
+                tempElement.innerText = i;
+                tempElement.value = i;
+
+                // Add to dropdown
+                theElement.appendChild(tempElement);
+            }
+        }
+
+
+        //Calling the function area
+
+        populateDropDownWithRange(1, 31, birthDAteSelector);
+        populateDropDownWithRange(1990, 2020, birthYearSelector);
+        populateDropDown(birthMonths, birthMonthSelector);
+
+
+
+
+
+
+        function populateDropDown(theArray, theElement) {
+            // Clear out anything in the dropdown
+            theElement.innerHTML = "";
+
+            // Loop thrugh the array, for every value, create an element and add it to the drop down
+            for (var i = 0; i < theArray.length; i++) {
+                // Create Element
+                var tempOption = document.createElement("option");
+
+                // Modify the Element
+                tempOption.innerText = theArray[i];
+
+                if (i == theArray.length - 1) // Target last in array
+                {
+                    tempOption.selected = true;
+                }
+
+                // Add to the dropdown element
+                theElement.appendChild(tempOption);
+
+            }
+        } // end of function
+
+
+
+
+        /*
+                buttonGenerator() {
+
+                    outputDiv.innerHTML = ""
+
+                }
+                */
+        /*
+                function whileLoading() {
+                    var daysToPossessEnding = 0;
+                    var daysStartingNumber = 1;
+
+                    if (birthMonths[0], birthMonths[1], birthMonths[2], birthMonths[3], birthMonths[4],
+                        birthMonths[5] == selectedIndex === 1) {
+                        daysToPossessEnding = 31;
+                    }
+
+
+                }
+
+        */
+
+        var outputDiv = document.getElementById("outputArea");
+
+        function firstName() {
+            var nameTargeting = document.getElementById("firstName").value;
+            outputDiv.innerHTML += "Your names is " + nameTargeting + "<br>";
+
+        }
+
+
+
+
+        //outputDiv.innerHTML = firstName();
+
+        //Select the dropdown which u target 
+
+        var birthDAteSelectorValue = document.getElementById("ddBirthDates").value;
+        /*
+        function monthChanging(Month, Date = 31) {
+            //updates the item to empty always 
+            //theElement.innerHTML = "";
+            var daysToPossessEnding = 0;
+            //var daysStartingNumber = 1;
+
+            if (birthMonthSelector === "January" || birthMonthSelector === "March" || birthMonthSelector === "April" || birthMonthSelector === "May") {
+                birthDAteSelectorValue = daysToPossessEnding;
+                daysToPossessEnding = 31;
+
+            } else if (birthMonthSelector === "June") {
+                birthDAteSelectorValue = daysToPossessEnding;
+                daysToPossessEnding = 30;
+            }
+
+
+        }
+
+        */
+
+
+        function monthChanging(Month, Date) {
+            //updates the item to empty always 
+            Date.innerHTML = "";
+            var daysToPossessEnding = 31;
+
+            if (Month.value === "April" || Month
+                .value === "June" ||
+                Month.value === "September" || Month.value === "November") {
+                daysToPossessEnding = 30;
+
+            } else if (Month.value === "February") {
+                daysToPossessEnding = 28;
+            }
+            populateDropDownWithRange(1, daysToPossessEnding, Date);
+        }
+
+        function() {
+
+        }
+    </script>
+
+
+</body>
+
+</html>

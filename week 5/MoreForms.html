@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            More Form Elements
+        </title>
+    </head>
+    <body>
+        <!-- Form Elements -->       
+        <h1> Credit Card Generator </h1>
+
+        <!-- Dropdown menu-->
+        <select id="ddBank" onchange="bankChanged();" >
+            <option selected disabled>Select an option...</option>
+            <option>CIBC</option>
+            <option>TD</option>
+            <option>RBC</option>
+            <option>BMO</option>
+        </select>
+
+        <br><br>
+
+        <select id="ddNumberOfCards" onchange="numberChanged(this) ;">
+            <option selected disabled>Select a number of cards to generate</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select>
+
+        <hr>
+        
+        <!-- Parameters for generation -->
+        <p>
+            Parameters for generation
+        </p>
+
+        <p id="pBankChoice">
+            Select a Bank
+        </p>
+
+        <p id="pNumberOfCards">
+            Select a number
+        </p>
+
+        <input type="button" onclick="onGenerateHandler();" value="Generate!"/>
+
+        <hr>
+
+        <div id="cardOutput">Cards Output here...</div>
+
+
+
+        <!-- Javascript -->
+        <script>
+            // Event Handlers
+            function onGenerateHandler()
+            {
+                // Grab the value in the first drop down
+                var bankPrefix = document.getElementById("ddBank").value;
+
+                // Assign bank prefix based on selection
+                bankPrefix = getBankPrefix(bankPrefix);
+
+                // Grab the value in the second drop down
+                var numberOfCards = document.getElementById("ddNumberOfCards").value;
+
+                // Call the generate function
+                generate(bankPrefix, numberOfCards);
+
+            }
+
+            function bankChanged()
+            {
+                // Grab Bank Value
+                var newBankValue = document.getElementById("ddBank").value;
+                console.log(newBankValue);
+
+                // Output area
+                var parameterElement = document.getElementById("pBankChoice");
+
+                // Call getBankPrefix() to output the value of that banks prefix
+                parameterElement.innerHTML = "Prefix: " + getBankPrefix(newBankValue);
+            }
+
+            // use this, in the form to actually pass the element to the function
+            function numberChanged(selectElement) 
+            {
+                // The element is passed to the function as a parameter
+                var newNumber = selectElement.value;
+
+                // Output area
+                var parameterElement = document.getElementById("pNumberOfCards");
+
+                // Output to the paragraph on the web page
+                parameterElement.innerHTML = "Number of Cards: " + newNumber;
+
+            }
+
+            /*
+                Generates a given number of credit cards
+                Returns: Nothing
+            */
+            function generate(bankPrefix, numOfCards)
+            {
+                // Grab the output element
+                var outputArea = document.getElementById("cardOutput");
+
+                // Clear the area 
+                outputArea.innerHTML = "";
+
+                // Generate cards and output as we go
+                var counter = 0; // How many cards we have created
+                while (counter < numOfCards)
+                {
+                    // theCard will store the Card number 
+                    var theCard = bankPrefix + " ";
+
+                    // Generate card number (3 sets of 4)
+                    var num2 = Math.floor( Math.random() * 9999 + 1000 );
+                    var num3 = Math.floor( Math.random() * 9999 + 1000 );
+                    var num4 = Math.floor( Math.random() * 9999 + 1000 );
+
+                    // Append to a string (attach prefix to those numbers)
+                    theCard = theCard + num2 + " " + num3 + " " + num4;
+
+                    // Output to web page
+                    outputArea.innerHTML = outputArea.innerHTML + theCard + "<br>";
+
+                    counter++; // Increment counter
+                }
+
+                // you are done
+
+            }
+
+            /*
+                Receives Bank from user Input
+                Returns: Number relative to that bank
+            */
+            function getBankPrefix(userInput)
+            {
+                if (userInput == "CIBC")
+                {
+                    return "2520";
+                }
+                else if (userInput == "TD")
+                {
+                    return "4670";
+                }
+                else if (userInput == "RBC")
+                {
+                    return "9140";
+                }
+                else if (userInput == "BMO")
+                {
+                    return "6130";
+                }
+                else
+                {
+                    return "0000";
+                }
+            }
+
+
+
+
+        </script>
+    </body>
+</html>

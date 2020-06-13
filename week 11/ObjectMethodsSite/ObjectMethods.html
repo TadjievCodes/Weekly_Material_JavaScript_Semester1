@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>
+            Object Methods
+        </h1>
+
+        <!-- Area to Output to -->
+        <div id="dOutput"></div>
+
+        <!-- 
+            This is us attaching an external script to this webpage 
+            In this case we have a seperate js file for all our objects and their constructors
+        -->
+        <script src="js/shapes.js"></script>
+
+        <script>
+            // Output function to reduce repetative output code
+            function output(msg)
+            {
+                document.getElementById("dOutput").innerHTML += msg + "<hr><br>";
+            }
+
+            // Create some shapes
+            var rect = new Rectangle(6, 40);
+            var tri = new Triangle(10, 20);
+            var circle = new Circle(45);
+
+            //output( rect.toString() );
+            //output( tri.toString() );
+            //output( circle.toString() );
+
+            // Array of our shapes
+            var shapes = [rect, tri, circle];
+
+            // Calling area and toString functions on our objects
+            for(var i = 0; i < shapes.length; i++)
+            {
+                output( shapes[i].area() );
+                output( shapes[i].toString() );
+            }
+            
+
+            // Run rectangle Demo 
+            //rectDemo(); // Uncomment to run
+
+            function rectDemo()
+            {
+                // Create a rectangle
+                var rectX = new Rectangle(10, 10);
+
+                // read properties of the created rectangle instance
+                console.log(rectX.length + " " + rectX.width);
+
+                // modify properties of rectangle instance
+                //rectX.length = 50;
+
+                // function calculating area of rectangle using l and w as params
+                function areaOfRectangle(w, l)
+                {
+                    return l * w;
+                }
+
+                // function calculating area of rectangle using the rectangles as a param
+                function areaOfRectangleO(r)
+                {
+                    return r.length * r.width; // reading rectangle properties
+                }
+
+                // calling above functions
+                console.log( areaOfRectangle(10, 10) );
+                console.log( areaOfRectangle(rectX.length, rectX.width) );
+                console.log( areaOfRectangleO(rectX) );
+
+                // calling the rectangles area() method
+                console.log( rectX.area() );
+
+                // creating another instance of rectangle
+                var rectZ = new Rectangle(24, 7);
+
+                // outputting its area
+                console.log( rectZ.area() );
+
+                // Example of us calling string objects built-in methods
+                var str = "Fanshawe";
+                var str2 = "COLLEGE";
+                console.log( str.toUpperCase() );
+                console.log( str2.toLowerCase() );
+
+                // How we would usually output our data in a string, for each object
+                console.log("This rectangle has a width of: " + rectX.width + " and a length of: " + rectX.length);
+                console.log("This rectangle has a width of: " + rectZ.width + " and a length of: " + rectZ.length);
+
+                // Using a method to do it better (less repetative code, less typing, easier to read)
+                console.log(rectX.toString());
+                console.log(rectZ.toString());
+            }
+
+           
+
+
+        </script>
+    </body>
+</html>

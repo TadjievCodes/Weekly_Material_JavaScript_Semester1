@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Intro to Arrays</h1>
+    <div id="dOutput"></div>
+    <script>
+        // Create an empty Array 
+        var theArray = [];
+        var cartItems = [];
+        console.log(theArray);
+        /*
+                    theArray.push();
+                    theArray.pop();
+                    theArray.unshift();
+                    theArray.shift();
+        */
+
+        // Create AND initialize an array
+        var fruits = ["Apple", "Oranges", "Banana"];
+        // indexing ->   0         1         2
+
+        // Access/Read the value of an array at a specific index
+        console.log(fruits);
+
+        // The element we want to output to (div)
+        var outputElement = document.getElementById("dOutput");
+
+        outputElement.innerHTML = outputElement.innerHTML + fruits[1] + "<br>";
+        outputElement.innerHTML = outputElement.innerHTML + fruits[2] + "<br>";
+        outputElement.innerHTML = outputElement.innerHTML + fruits[0] + "<br>";
+
+        // Access a value that isnt there
+        outputElement.innerHTML = outputElement.innerHTML + fruits[3] + "<br>";
+
+        // Overwrite a specific value in the array using the index
+        fruits[0] = "Grapes";
+        fruits[3] = "Mango";
+        //fruits[10] = "Haha";
+        fruits.push("Kiwi");
+        //fruits[6] = "Strawberry";
+        console.log(fruits);
+
+        // the number of elements in an array 
+        console.log(fruits.length);
+
+        // Queue of items
+        var conveyorBelt = ["Lego", "Shampoo", "Granola"];
+
+        console.log(conveyorBelt);
+
+        // Removes from BACK of array and returns removed value
+        var itemRemoved = conveyorBelt.pop();
+
+        console.log(conveyorBelt);
+        console.log(itemRemoved);
+
+        // Removes from the front, shifts indexes into new place and returns removed value
+        console.log(conveyorBelt.shift());
+        console.log(conveyorBelt);
+
+        // Adding to the array
+        conveyorBelt.unshift(itemRemoved);
+        conveyorBelt.push("Lego");
+
+        console.log(conveyorBelt);
+
+        // Unshift adds to the FRONT of the array, and shifts old indexs as well as expands the size of the array
+        conveyorBelt.unshift("Mangos");
+        conveyorBelt.unshift("Kiwi");
+
+        // Push adds to the BACK of the array, adding after the last index of the current array. It also expands the size of the array
+        conveyorBelt.push("Strawberry");
+        conveyorBelt.unshift("Watermelon");
+
+        console.log(conveyorBelt);
+
+        // Outputs all elments as a single string, split by a comma and no spaces. (Good for debugging ugly for real use)
+        outputElement.innerHTML = outputElement.innerHTML + "<br>" + conveyorBelt.toString() + "<br>";
+
+        // Ouput using a loop
+        // control variable, keeps track of total times looped (0)
+        // total number of times to loop ().length)
+        // increment that loop
+        for (var index = 0; index < conveyorBelt.length; index++) {
+            // output each item in the array using the loop control variable as the index
+            outputElement.innerHTML = outputElement.innerHTML +
+                conveyorBelt[index] + "<br><hr>";
+            console.log(index);
+        }
+
+
+        var numbers = [1, 5, 66, 32, 77];
+
+        var booleans = [true, false, true, true, false];
+        // You could mix any data types though that's not the best practice
+        // This is yet another example of how JAVASCRIPt is a loosly typed high level language, you are able to provide whatever
+        //data you want into an array, it doesn;t care and will jsut store that date like another old variable would.description
+        //While you're able to do this , don't do it please
+        var garbage = ["Hello", 5.5, false, "Sixty", true, 6.6];
+
+
+
+        var mark = 80.7;
+        // Be careful to name different variables so you can reference them easily and not mix them up with other variables
+        var marks = [45, 66, 87, 99];
+    </script>
+</body>
+
+</html>

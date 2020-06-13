@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Elements</title>
+    </head>
+    <body>
+        <!-- Divs are used to section off parts of the webpage -->
+        <div>
+            <h1>This is one section of the webpage.</h1>
+        </div>
+
+        <!-- Some form elements -->
+        <div>
+            <h2>This is another section of the webpage.</h2>
+
+            <!-- Textboxes -->
+            Username: <input type="text" id="tbUsername" value="FluffyUnicorn200"/>
+            <br>
+            Password: <input type="password" id="tbPassword"/>
+            <br>
+
+            <!-- Checkbox -->
+            Checkbox: <input type="checkbox" />
+            <br>
+
+            <!-- Button -->
+            <input type="button" value="Log In" onclick="theLogin();" />
+            <!--<input type="button" value="Log In" onclick="readUserName();" />-->
+
+            <br>
+
+            <input type="button" value="Test" 
+            onclick="alert('Hello World!');" />
+
+            <!-- Horizontal Line -->
+            <hr>
+
+            <!-- Paragraph -->
+            <p>
+                <!-- Radio Buttons -->
+                <input type="radio" name="age" value="Child">Child</input>
+                <br>
+                <input type="radio" name="age" value="Adult">Adult</input>
+                <br>
+                <input type="radio" name="age" value="Senior">Senior</input>
+                <br>
+            </p>
+
+        </div>
+
+        <hr>
+
+        <!-- this div will hold some output text -->
+        <div id="theOutputArea">
+            
+        </div>
+
+        <!-- Javascript -->
+        <script>
+            // Some code to interact with our form elements
+            // Return the text from the username textbox
+            function readUserName()
+            {
+                // Grab the value from the username textbox
+                var element = document.getElementById("tbUsername");
+
+                // read the value property from the element
+                var theTextInTheBox = element.value;
+
+                // Output in some way...
+                //alert(theTextInTheBox);
+
+                return theTextInTheBox;
+
+            }
+            
+            // Return the value from the password textbox
+            function readPassword()
+            {
+                var elementValue = document.getElementById("tbPassword").value;
+
+                return elementValue;
+
+            }
+
+            // This function will handle the login
+            function theLogin()
+            {
+                // Get Username
+                var username = readUserName();
+
+                // Get Password
+                var password = readPassword();
+
+                // Simulating a user to login..
+                var loginMessage = "";
+                if (username == "FluffyUnicorn200" 
+                            && password == "test")  
+                {
+                    loginMessage = "Successfully logged in user: FluffyUnicorn200!";
+                }
+                else 
+                {
+                    loginMessage = "Log-in Failed, incorrect username or password!";
+                }
+
+                // Output to webpage
+                //document.getElementById("theOutputArea").innerHTML = loginMessage;
+
+                var theOutputElement = document.getElementById("theOutputArea");
+
+                // We are writting to the innerHTML property (a variable stored in that HTMLElement Object)
+                theOutputElement.innerHTML = theOutputElement.innerHTML + " <br> " + loginMessage; // Appends
+
+                //theOutputElement.innerHTML =" <br> " + loginMessage; // Overwrites
+
+                // Appending to the output is very important depending on what functionality you are trying to tackle in your web page, keep this in mind for future labs
+
+            }
+
+            //readUserName();
+        </script>
+    </body>
+</html>

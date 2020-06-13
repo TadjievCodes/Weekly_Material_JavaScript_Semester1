@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>
+        Baby Name Generator
+    </h1>
+    <input type="button" value="Change Gender" onclick="switchGenderList()" />
+    <br> Names:
+    <div id="dNamesOutput">[Names Here]</div>
+    <br> Last Names:
+    <div id="dLastNamesOutput">[Last Names Here]</div>
+
+    <input type="button" value="Generate Names" onclick="generateNames()" />
+    <br> Generated Names:
+    <div id="dGeneratedNamesOutput">[Generated Names Here]</div>
+
+
+    <script>
+        var aMaleNames = ["John", "Luke", "Alan"];
+        var aFemaleNames = ["Sarah", "Liz", "Chloe"];
+        var aLastNames = ["Smith", "Doe", "White", "Snow"];
+        var aRandomlyGeneratedNames = [];
+        var selectedGender = "Female";
+
+
+        //When this script loads run these functions
+
+        printLastName();
+        switchGenderList();
+
+
+
+
+        //Generate NAMES Function
+        // Select a random name from selected gender, and a random last name
+        //Then it will add it to the list of generated names(array)
+
+        function generateName() {
+
+            var first = "";
+            //Which name was selected 
+            if (selectedGender == "Male") {
+                //use male name array
+                var randIndex = Math.floor(Math.random() * aMaleNames.length);
+                first = aMaleNames[randIndex];
+            } else if (selectedGender == "Female") {
+                var randIndex = Math.floor(Math.random() * aFemaleNames.length);
+                first = aFemaleNames[randIndex];
+            }
+            //use female names array
+
+        }
+
+
+        var last = "";
+        //Which name was selected 
+        if (selectedGender == "Male") {
+            //use male name array
+            var randIndex = Math.floor(Math.random() * aMaleNames.length);
+            first = aMaleNames[randIndex];
+        } else if (selectedGender == "Female") {
+            var randIndex = Math.floor(Math.random() * aFemaleNames.length);
+            first = aFemaleNames[randIndex];
+        }
+        //use female names array
+
+        }
+
+
+
+
+
+
+        //Add generated name to array
+        aRandomlyGeneratedNames.push(fisrt + " " + last);
+
+        betterOutputArrayToDiv(aRandomlyGeneratedNames,
+            document.getElementById("dGeneratedNamesOutput"));
+
+
+
+
+        function prinLastName() {
+            //Call our output function to output the names
+            betterOutputArrayToDiv(aLastNames, document.getElementById("dLastNamesOutput"));
+        }
+
+        //When the switch geNDER button is pressed this ffucntion willbe called, it will change the list of names shown on screen
+        function switchGenderList() {
+            if (selectedGender == "Female") {
+                //Show the male names
+                outputArrayToDiv(aMaleNames);
+                //Switch the selected Gender
+                selectedGender = "Male";
+            } else if (selectedGender == "Male") {
+                //Show the female Names
+                outputArr
+                ayToDiv(aFemaleNames);
+
+                //Switch the selected Gender
+                selectedGender = "Female";
+            }
+        }
+
+
+        // Will create a function to output an array that is passed to it
+        function outputArrayToDiv(nameArray) {
+            //clear ouput before continuing
+            document.getElementById("dNamesOutput").innerHTML = "";
+
+            //To output an array, we refer to the length property         
+            var index = 0;
+            while (idnex < nameArray.length) {
+                //Output to Div
+                document.getElementById("dNamesOutput").innerHTML =
+                    document.getElementById("dNamesOutput").innerHTML +
+                    nameArray[index] + "<br><hr>";
+                //Increment
+                index++;
+            }
+        } //end of outputArrayToDiv
+    </script>
+
+
+
+
+</body>
+
+
+
+
+</html>

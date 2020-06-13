@@ -1,0 +1,29 @@
+<!--
+Name:		Daniel Malnati
+Date:		January, 2019
+Purpose:	Prompt for a Fahrenheit temperature and convert it to Celsius and write it to the page
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Temperature Converter</title>	
+		<script>
+		alert("Welcome to the Temperature Converter");
+	
+		//Declare variables to hold user input using prompts
+		var fahrenheit = prompt("Enter a temperature in Fahrenheit", "85");	
+		fahrenheit = parseInt(fahrenheit);
+		
+		//Calculate the temperature in celsius
+		var celsius = 5 / 9.0 * (fahrenheit - 32);
+		console.log(celsius);
+				
+		//Output the converted temperature
+		document.write("The conversion of " + fahrenheit + " degrees Fahrenheit is " + celsius.toFixed(2) + " degrees Celsius." + "<br>");
+		celsius = Math.round(celsius);
+		console.log(celsius);
+		</script>
+	</head>
+	<body>			
+	</body>
+</html>

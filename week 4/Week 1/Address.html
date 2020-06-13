@@ -1,0 +1,31 @@
+<!--
+Name:		Daniel Malnati
+Date:		January, 2019
+Purpose:	Prompt for a user's address and write it to the page
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Address</title>	
+		<script>
+		alert("Welcome to the Address Viewer");
+	
+		//Declare variables to hold user input using prompts
+		var fullName = prompt("Enter your full name", "First Last");		
+		var address = prompt("Enter your address", "Address");
+		var city = prompt("Enter your city", "London");
+		var province = prompt("Enter your province", "Ontario");
+		var postalCode = prompt("Enter your postal code", "L3L 3L3");
+					
+		//Output a mailing address to the page
+		document.write("<h1>" + "Hello, " + fullName + ", this is your mailing address:" + "</h1>");
+		document.write(fullName + "<br>");
+		document.write( address + "<br>");
+		document.write( city + ", " + province + "<br>");
+		document.write(postalCode + "<br>");
+		</script>
+	</head>
+	<body>			
+	</body>
+</html>
+	

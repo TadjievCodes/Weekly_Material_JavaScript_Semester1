@@ -1,0 +1,104 @@
+<html>
+
+<body>
+    <h1>Math Functions</h1>
+    <script>
+        // Documentation for Math Library 
+        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
+
+        // Math Object
+        /*
+        	Window Object   - Browser
+        	Document Object - Web Page
+        	Console Object  - Console 
+        	Number			
+        	String
+        	Boolean 
+        	Math Object		- Built in library of functions that execute more complex math operations
+        */
+        // window.alert()
+        // document.write()
+        // console.log()
+
+        // Math Properties - These are variables stored in the Math Object that contain built in values defined by the Author of the Library. 
+
+        console.log(Math.PI); // PI's representation based on this library
+        var radius = 5;
+        var areaOfCircle = Math.PI * (radius ** 2); // ** exponent operator, this is the one time we will use it
+        console.log("Area of Circle with a radius of " + radius + " == " + areaOfCircle);
+
+
+        // Math Methods 
+        //Math.pow(base, exponent);
+        var twoPowerOf2 = Math.pow(2, 2);
+        console.log(twoPowerOf2);
+        var twoPowerOf4 = Math.pow(2, 4);
+        console.log(twoPowerOf4);
+
+        // Revisiting the Area of circle calculation
+        areaOfCircle = Math.PI * Math.pow(5, 2);
+        console.log(areaOfCircle);
+
+        // NOTE: You can place functions where-ever you like, just keep in mind that brackets () have to have an opening and closing pair. So be sure to keep track of where you place brackets to avoid syntax errors
+
+        // Math.round(number) - this rounds the number to the nearest whole number
+        var num = 5.46; // round down
+        console.log(Math.round(num));
+
+        num = 5.56; // round up
+        console.log(Math.round(num));
+
+        // Math.floor(number) - rounds down to nearest whole number regardless of decimal value
+        num = 10.56;
+        console.log(Math.floor(num));
+
+        // Math.ceil(number) - rounds up to nearest whole number regardless of decimal value
+        num = 10.46;
+        console.log(Math.ceil(num));
+
+        // Math.trunc(number) - return only the intger portion of a decimal number
+        num = 155.78;
+        console.log(Math.trunc(num));
+
+        // Math.abs(number) - absolute value ensures a positive value is returned (converts negative to positive) 
+        num = -12;
+        console.log(Math.abs(num));
+
+        num = 12;
+        console.log(Math.abs(num));
+
+        // max and min 
+        // Returns the maximum or minimum numbers of provided list of values
+        num1 = 123;
+        var num2 = 456;
+
+        console.log("Higher number: " + Math.max(num1, num2));
+
+        console.log("Lower number: " + Math.min(num1, num2));
+
+        console.log("Higher number: " + Math.max(12, 34, 61, 3, 67, 23, 5));
+
+        console.log("Lower number: " + Math.min(12, 34, 61, 3, 67, 23, 5));
+
+        // Math.random()
+        // Generates a decimal number between 0.0 and 0.9
+        // We can multiply this value by a range of numbers to achieve a random number within that range
+
+        var randomResult = Math.random();
+        console.log(randomResult);
+
+        var resultWithMax = Math.random() * 100;
+        console.log(resultWithMax);
+
+        console.log(Math.floor(resultWithMax));
+
+        // Range using max and minimum numbers with random function
+        var max = 50;
+        var min = 10;
+        var resultWithRange = Math.random() * (max - min) + min;
+        var sentence = "Random number between " + min + " and " + max + " = ";
+        console.log(sentence + Math.floor(resultWithRange));
+    </script>
+</body>
+
+</html>

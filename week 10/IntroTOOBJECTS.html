@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Intro to Objects</h1>
+    <div id="dUsers">
+
+    </div>
+
+
+    <script>
+        //Creating Some Objects
+
+
+        //JSON approach to creating Objects
+
+        var person1 = {
+            name: "John",
+            age: 54,
+            money: 164
+        }
+
+
+
+        var person2 = {
+            name: "Jane",
+            age: 34,
+            money: 4523.00
+        }
+
+
+        console.log(person1.name); // Accessing objects through Dot Notation
+        console.log("$" + person1.money);
+        console.log(person1.age);
+
+
+        console.log(person2.name); // Accessing objects through Dot Notation
+        console.log("$" + person2.money);
+        console.log(person2.age);
+
+        console.log(person2.height); // Person2 aoes not have a height actually
+
+
+        //Creating Objects USing Constructor
+
+        function Person(n, a, m, g, e) {
+            this.name = n; // The first this.name is accessing the object of person1 or person2 however the second one n,a,m is the parameter that was declared above of the function
+            this.age = a; // 
+            this.money = m;
+            this.gender = g;
+            this.eyeColor = e;
+        }
+
+
+
+
+        //Through new keyword we're calling the function Person and assigning it to a variable while passing the arguments for the parameters
+        //Here calling the constructor
+        var person3 = new Person("Kevin", 27, 756.00, "Blue");
+
+        console.log(person3.name); // Accessing objects through Dot Notation
+        console.log(person3.age);
+        console.log("$" + person3.money);
+        console.log(person3.gender);
+        console.log(person3.eyeColor); //The order of parameters in Constructor really matters
+
+
+
+
+
+        var person4 = new Person("Sarah", 33, 10000.00, "Female");
+
+        console.log(person4.name); // Accessing objects through Dot Notation
+        console.log(person4.age);
+        console.log("$" + person4.money);
+        console.log(person4.gender);
+        console.log(person4.eyeColor);
+
+
+        //Variable stores one value
+        //array stores smany values - indexed
+        //objects - contains many properties of values, stored in a single variable
+
+
+
+
+
+
+
+
+
+        //Create an array to store many objects
+
+        let users = [];
+
+
+        function User(n, p, e) {
+            this.name = n;
+            this.pass = p;
+            this.email = e;
+        }
+
+
+
+        //Instance of User Object
+        var user1 = new User("Donna", "Water 45", "donna@email.com");
+
+
+
+        //add instance to array
+        users.push(user1);
+
+        //output array to console
+        console.info(users);
+
+
+        let oddUser = {
+            name: "Hacker",
+            pass: "hackerman27",
+            email: "hackerman@email.com",
+            admin: true
+        }
+
+        users.push(oddUser);
+
+
+
+        // This is an easier way but if you prefer the first method by all means go ahead
+        // Creating bunch of instanced users and pushing them into an array
+        // by this we avoid creating unused variables why cuz this user1 variable won't be used anywhere else
+        users.push(new User("David", "Macadamia 74", "david@email.com"));
+
+        users.push(new User("Jason", "florida21", "jasosn@email.com"));
+
+        users.push(new User("Stacey", "Winter 32", "stacey@email.com"));
+        users.push(new User("Patricia", "tree 32", "patricia@email.com"));
+
+
+
+
+        //Output Users to WebPage
+        for (let i = 0; i < users.length; i++) {
+            //Create Output
+            var str = "User " + (i + 1) + ": ";
+            str = str + users[i].name;
+            str += " " + users[i].email; //Compound Operator we just used and its useful to save the line of code like no need str = str but just str +=
+            str += " ( isAdmin: " + users[i].admin + " ) "; //When looping through an array of object,make sure the properties exist otherwise
+            //you might get undefined as a result
+
+
+            //Output to Div
+            document.getElementById("dUsers").innerHTML += str + "<br/>";
+        }
+    </script>
+
+
+
+</body>
+
+</html>

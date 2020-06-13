@@ -1,0 +1,29 @@
+<!--
+Name:		Daniel Malnati
+Date:		January, 2019
+Purpose:	Prompt for a user for two numbers, first larger than the second
+			Output if second is multiple of first
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Is Multiple</title>	
+		<script>	
+		//Declare variables to hold a user's input of 2 integers, using prompts		/ 
+		var num1 = prompt("1. Enter an integer", "29");	
+		var num2 = prompt("2. Enter an integer (less than the first integer)", "7");	
+				
+		//Check to see if the second number is a multiple of the first number
+		if(num1 % num2 == 0)
+		{
+			document.write(num1 + " is a multiple of " + num2 + "<br>");
+		}
+		else
+		{
+			document.write(num1 + " is not a multiple of " + num2 + "<br>");
+		}
+		</script>
+	</head>
+	<body>			
+	</body>
+</html>

@@ -1,0 +1,116 @@
+<html>
+	
+	<body>
+		<h1>
+			Selection Structures!
+		</h1>
+		<script>
+			// Single Selection
+			var runIntro = false;
+			
+			if (runIntro /* == true */) // (!=) this is the not equal relational operator, however we can use (!) to flip a boolean value if we want to check for situations where the condition is not true -> !runIntro 
+			{
+				alert("Welcome to Selection Statements!");
+			}
+			
+			console.log("Start of program!"); // This tells us we hit this line of code
+			
+			// Double Selection / Multiple Selection
+			var userAge = 66;
+			
+			if (userAge >= 65)
+			{
+				alert("You are too old to see this R rated film!");
+			}
+			else if (userAge >= 18)
+			{
+				alert("You are allowed to see this R rated film!");
+				console.log("Permission Granted");
+			}
+			// Order your checks by priority, when it comes to checking a range of numbers in multiple if statements, place the higher number in the range first and the lower values in the range check afterwards.
+			/*else if (userAge >= 65)
+			{
+				alert("You are too old to see this R rated film!");
+			}*/
+			else
+			{
+				alert("Get out of here kid! SCRAM!");
+			}
+			
+			// You may have a situation where you have multiple branching paths in your selection tree, you can place if statements within other if statements, this is known as a 'Nested If Statment'
+			
+			var gender = "Male";
+			var age = 26;
+			var insuranceRate = 0.0; // Float - decimal number
+			
+			// Is the user male or female
+			if (gender === "Male")
+			{
+				console.log("Male Outcome");
+				// Male Outcome
+				if (age >= 25) 
+				{
+					// Eligable
+					alert("You are eligable for Insurance!");
+				}
+				else
+				{
+					// Ineligable
+					alert("You are ineligable for insurance.. Sorry.");
+				}
+				
+			} // end if
+			else 
+			{
+				console.log("Female Outcome");
+				// Female Outcome
+				if (age >= 18) 
+				{
+					// Eligable
+					alert("You are eligable for Insurance!");
+				}
+				else
+				{
+					// Ineligable
+					alert("You are ineligable for insurance.. Sorry.");
+				}
+				
+			} // end else
+			
+			// A different approach to the Nested If ...
+			
+			if (gender === "Male" && age >= 25)
+			{
+				alert("Congratulations sir you are eligable for Insurance!");
+			}
+			else if (gender === "Female" && age >= 18)
+			{
+				alert("Congratulations madam you are eligable for Insurance!");
+			}
+			else
+			{
+				alert("Sorry You are ineligable for Insurance :(");
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+<!--
+Name:		Daniel Malnati
+Date:		January, 2019
+Purpose:	Prompt for 6 integers and calculate their average and write it to the page
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Numbers Average</title>	
+		<script>
+		alert("Welcome to the Numbers Average Calculator");
+		
+		//Declare variables to hold sum
+		var sum = 0;		
+	
+		//Declare variables to hold user input using prompts
+		var num = prompt("1. Enter a number", "3");
+		sum += parseInt(num);
+		
+		num = prompt("2. Enter a number", "6");
+		sum += parseInt(num);
+		
+		num = prompt("3. Enter a number", "7");
+		sum += parseInt(num);
+		
+		num = prompt("4. Enter a number", "8");
+		sum += parseInt(num);
+		
+		num = prompt("5. Enter a number", "10");
+		sum += parseInt(num);
+		
+		num = prompt("6. Enter a number", "12");
+		sum += parseInt(num);
+		
+		//Calculate the average of the six numbers entered
+		var average = sum / 6.0;
+				
+		//Output the converted temperature
+		//Controlling the length of decimals in output Chapter 30
+		document.write("The sum is " + sum + "<br>");
+		document.write("The average of the 6 numbers you entered is " + average.toFixed(2) + "<br>");
+		</script>
+	</head>
+	<body>			
+	</body>
+</html>

@@ -1,0 +1,12 @@
+.playButton {
+    background-color: green;
+}
+
+.notPlayButton {
+    background-color: red;
+}
+
+.imgSlot {
+    width: 100px;
+    height: 100px;
+}

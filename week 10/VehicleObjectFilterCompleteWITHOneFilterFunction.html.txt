@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <h1>Vehicle Filter</h1>
+    <body>
+        <div>
+            Display By:
+            <br>
+            <input type="radio" name="rbFilter" value="All" checked onclick="displayVehicles();"/>All
+            <input type="radio" name="rbFilter" value="Insured" onclick="displayVehicles();"/>Insured
+            <input type="radio" name="rbFilter" value="Not Insured" onclick="displayVehicles();"/>Not Insured
+        </div>
+
+        <br><hr>
+
+        <div id="dVehicles">
+            <!-- vehicles display here -->
+        </div>
+
+        <br><hr>
+
+        <div>
+            Filter By:  <input type="text" id="tbFilter"/>
+            <br><br>
+            <input type="button" value="Filter By Make" onclick="filter('make');"/>
+            <input type="button" value="Filter By Model" onclick="filter('model');"/>
+            <input type="button" value="Filter By Color" onclick="filter('color');"/>
+            <input type="button" value="Query By License Plate" onclick="filter('plate');"/>
+        </div>
+        <br><hr>
+        <div id="dFilteredOutput">
+
+        </div>
+
+        <script>
+            // Constructor
+            function Vehicle(make, model, color, year, license, ins)
+            {
+                this.make = make;       // String
+                this.model = model;     // String
+                this.color = color;     // String
+                this.year = year;       // Number  
+                this.license = license; // String
+                this.isInsured = ins;   // Boolean  
+            }
+
+            // Array to contain our vehicle objects
+            var vehicles = [];
+
+            // Mimick a database retrieval from the webserver
+            function initializeVehicles()
+            {
+                // Add some vehicles to our array...
+
+                // JSON
+                var vehicle1 = {
+                    make:  "Toyota"   ,
+                    model: "Corolla",
+                    color: "red" ,
+                    year:  2016,
+                    license: "CATR-C13",
+                    isInsured: true
+                }
+                vehicles.push(vehicle1);
+
+                // Constructor Calls
+                vehicles.push( new Vehicle("Hyundai", "Elantra", "blue", 2018, "BPRT-17R", false) );
+                vehicles.push( new Vehicle("Tesla", "Roadster", "white", 2019, "TESL-XX5", true) );
+                vehicles.push( new Vehicle("Toyota", "Corolla", "blue", 2008, "AAA2-PU2", false) );
+                vehicles.push( new Vehicle("Hyundai", "Sante Fe", "silver", 2017, "K16C-URD", true) );
+                vehicles.push( new Vehicle("Tesla", "Model S", "silver", 2020, "TESL-XX4", true) );
+                vehicles.push( new Vehicle("Hyundai", "Tuscon", "blue", 2017, "D43G-POY", false) );
+                vehicles.push( new Vehicle("Honda", "Accord", "red", 2014, "ZGTY-009", false) );
+                vehicles.push( new Vehicle("Toyota", "Camry", "silver", 2015, "TYPO-990", true) );
+                vehicles.push( new Vehicle("Honda", "Civic", "red", 2014, "H1CK-1PU", false) );
+                vehicles.push( new Vehicle("Tesla", "Cybertruck", "green", 2021, "TESL-CR4", false) );
+                vehicles.push( new Vehicle("Honda", "Civic", "silver", 2013, "ZTOT-1G3", true) );
+                vehicles.push( new Vehicle("Hyundai", "Tuscon", "red", 2019, "CRT4-76Y", true) );
+
+
+            }
+
+            // Output to the web page
+            function displayVehicles()
+            {
+                var theDiv = document.getElementById("dVehicles"); // The output div
+                theDiv.innerHTML = ""; // Clear previous Elements
+
+                // Retreiving the checked radio button value (All, Insured, Not Insured)
+                var displayFilter = document.querySelector("input[name='rbFilter']:checked").value;
+                console.log( "Current Filter: " + displayFilter );
+
+                // Loop through array
+                for (var i = 0; i < vehicles.length; i++)
+                {
+                    var tempVehicle = vehicles[i]; // Instead of typing vehicle[i] everytime, we can assign to a variable and use that to refer to the properties in our object instead
+
+                    // Display based on filter
+                    if ( (tempVehicle.isInsured == true && displayFilter == "Insured") || 
+                         (tempVehicle.isInsured == false && displayFilter == "Not Insured") ||
+                          displayFilter == "All")
+                    {
+                        var tempEl = document.createElement("p");                    
+                        tempEl.innerText = tempVehicle.make + " " + tempVehicle.model + " " + tempVehicle.color + " " + tempVehicle.year + " " + tempVehicle.license + " " + tempVehicle.isInsured;
+
+                        // style p element with the color of the vehicle
+                        tempEl.style.border = "1px solid " + tempVehicle.color;
+
+                        // Append to the div
+                        theDiv.appendChild(tempEl);
+                    } // end if
+                    
+                } //end for
+            }
+
+            // Call functions on load
+            initializeVehicles();
+            displayVehicles();
+
+            // TODO: A better approach would use just one function
+            // Reduce these 4 functions into 1
+
+            function filter(type)
+            {
+                var userInput = document.getElementById("tbFilter").value; // textfield
+                var theOutputDiv = document.getElementById("dFilteredOutput");
+                theOutputDiv.innerHTML = ""; // Clear anything there
+
+                // Loop through array and look for matches
+                for (var i = 0; i < vehicles.length; i++)
+                {
+                    // check for match
+                    var match = false;
+                    if (type == "make")
+                    {
+                        match = (vehicles[i].make.toLowerCase() == userInput.toLowerCase()); // does the make match?
+                    }
+                    else if (type == "model")
+                    {
+                        match = (vehicles[i].model.toLowerCase() == userInput.toLowerCase()); // does the model match?
+                    }
+                    else if (type == "color")
+                    {
+                        match = (vehicles[i].color.toLowerCase() == userInput.toLowerCase()); // does the color match?
+                    }
+                    else if (type == "plate")
+                    {
+                        match = (vehicles[i].license.includes(userInput)); // does the plate match?
+                    }
+
+                    // If there is a match, we output this vehicle, if not, we dont
+                    if (match == true)
+                    {
+                        var tempEl = document.createElement("p");  
+                        
+                        tempEl.innerText = vehicleToString(vehicles[i]); // This function will return string for output
+
+                        tempEl.style.border = "1px solid " + vehicles[i].color;
+                        theOutputDiv.appendChild(tempEl);
+                    }
+                }
+            }
+
+            // Helper function to return string of object properties
+            function vehicleToString(v)
+            {
+                // In future we will make this a method of the vehicle object
+                return v.make + " " + v.model + " " + v.color + " " + v.year + " " + v.license + " " + v.isInsured;
+            }
+
+        </script>
+
+
+    </body>
+</html>

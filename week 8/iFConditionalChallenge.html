@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>Intro to Conditional IF statements</h1>
+    <main>
+
+
+    </main>
+
+
+    <script>
+        /* 
+                                                                                      1. Store correct answers
+                                                                                       - When quiz begins, no answers are correct
+                                                                                    */
+
+        let correct = 0;
+
+        // 2. Store the rank of a player
+
+        let rank;
+
+
+        // 3. Select the <main> HTML element
+        const main = document.querySelector("main");
+
+
+        /*
+          4. Ask at least 5 questions
+           - Store each answer in a variable
+           - Keep track of the number of correct answers
+        */
+        const question1 = prompt("What is the programming language for Web");
+        if (question1.toUpperCase() === "JAVASCRIPT") {
+            correct += 1;
+        }
+
+
+        const question2 = prompt("What is the design language for Web");
+        if (question2.toUpperCase() === "CSS") {
+            correct += 1;
+        }
+
+
+        const question3 = prompt("What is the hypertext language for Web");
+        if (question3.toUpperCase() === "HTML") {
+            correct += 1;
+        }
+
+
+        const question4 = prompt("What is the Back End language for Web");
+        if (question4.toUpperCase() === "PHP") {
+            correct += 1;
+        }
+
+
+        const question5 = prompt("What is the favorite language for Web");
+        if (question5.toUpperCase() === "JAVASCRIPT") {
+            correct += 1;
+        }
+
+
+        /*
+  5. Rank player based on number of correct answers
+   - 5 correct = Gold
+   - 3-4 correct = Silver
+   - 1-2 correct = Bronze
+   - 0 correct = No crown
+*/
+        if (correct === 5) {
+            rank = "Gold";
+        } else if (correct >= 3) {
+            rank = "Silver";
+        } else if (correct >= 1) { // check for 1-2 correct cuz more than 1 mentioned  >= greater than one or equal to one 
+            rank = "Bronze";
+        } else {
+            rank = "None :(";
+        }
+
+
+
+
+        // 6. Output results to the <main> element
+        main.innerHTML = ` 
+    <h2> you got ${correct} answers out of 5 questions correct.</h2>
+    <p>Crown Earned: <strong>${rank}</strong></p>
+
+   `;
+    </script>
+
+
+</body>
+
+</html>

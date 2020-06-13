@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Arrays Introduction</title>
+</head>
+
+<body>
+    <h1>Arrays Practice</h1>
+    <div id="output"></div>
+
+    <div id="averageDisplay"></div>
+
+
+    <script>
+        //!New Exercise array numbers
+
+        // The element we want to output to (div) a Global Variable
+        let outputElement = document.getElementById("output");
+
+
+        //1.Declaring an array with number
+        let numberArrays = [10, 58, 47, 12, 5, 4, 8, -7, 521, -99];
+        let totalNumber = 10 + 58 + 47 + 12 + 5 + 4 + 8 + -7 + 521 + -99;
+        //2.Print the array and its length.
+        //outputElement.innerHTML += numberArrays.length;
+
+        //3.Find and output the average of the array.
+
+        function findAverage() {
+            //totalNumber = a;
+            var average = 0;
+            var sum = 0;
+
+            for (var counter = 0; counter < numberArrays.length; counter++) {
+                sum += numberArrays[counter];
+            }
+            average = totalNumber / numberArrays.length;
+            return average;
+        }
+        let averageNum = findAverage();
+        outputElement.innerHTML += (averageNum);
+
+
+
+
+        //console.log(totalNumber);
+        //console.log(numberArrays.reduce((a, b) => a + b, 0));
+
+
+
+        /*
+
+        var aNums = [10, 58, 47, 12, 5, 4, 8, -7, 521, -99];
+        //printArrayInDiv(aNums, "nums", true);
+
+        function printValueWNote(string, value) {
+            theDiv = document.getElementById("numsN");
+            theDiv.innerHTML = theDiv.innerHTML + string + " : " + value + "<br>";
+        }
+
+        function averageOfArray(array) {
+            var average = 0;
+            var sum = 0;
+            for (var index = 0; index < array.length; index++) {
+                sum += array[index];
+            }
+            average = sum / array.length;
+            return average;
+        }
+
+
+        printValueWNote("Average", averageOfArray(aNums));
+        printValueWNote("Maximum", Math.max.apply(null, aNums))
+        printValueWNote("Minimum", Math.min.apply(null, aNums))
+
+        */
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<html>
+    <body>
+        <h1>The DO While</h1>
+        <script>
+            // Just like the ragular while loop, the do while loop behaves the same way, only the order of events occuring is slightly different
+
+            //var counter = 5;
+            var playAgain = false;
+
+            // The DO while will execute the code containted inside of the loop 1 time NO MATTER what the condition to repeat is. 
+            // ie: if counter is 5 and the condition is (counter < 5), the code inside the loop will run at least once
+            do
+            {
+                alert("Hello!");
+
+                // Ask the user, do you want to play again?
+                // prompt() the user for a yes or no response
+                // the user types yes or no..
+                // we can use an If to see if they entered 'No'
+                // And that could be what we use to control our loop.
+                // OR...
+                // We can use a built in function :)
+                
+                /*
+                if (userResponse == "No" || userResponse == "no" ||userResponse == "NO")
+                {
+                    playAgain == false;
+                }*/
+
+                playAgain = window.confirm("Do you want to loop again? \nOK == YES \nCANCEL == NO");
+
+                console.log( playAgain );
+
+
+                //counter++;
+            } while (playAgain == true);
+            //} while (counter < 3);
+        
+            alert("Done");
+
+
+
+
+        </script>
+    </body>
+
+</html>

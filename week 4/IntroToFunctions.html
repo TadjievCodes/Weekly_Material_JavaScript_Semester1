@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <h1>Hello</h1>
+    </head>
+    <body>
+        <script>
+            // Function declaration(s)
+            function evenOrOddMessage(name) 
+            {
+                var message = "";
+                if (name.length % 2 == 0)
+                {
+                    message = "There is an even number of letters in your name.";
+                }
+                else
+                {
+                    message = "There is an odd number of letters in your name.";
+                }
+
+                return message;
+                // console.log(message);
+
+            } // end of function evenOrOddMessage()
+ 
+
+            // Gather User Input
+            var userInput = prompt("Enter your name: ", "Bob");
+
+            // Call the function we made
+            var msg1 = evenOrOddMessage("Daniel");
+            console.log(msg1);
+
+            console.log( evenOrOddMessage(userInput)  );
+
+            console.log("Hello " + userInput + " " + evenOrOddMessage(userInput));
+            
+            evenOrOddMessage("Alexandria");
+
+            evenOrOddMessage("Simon");
+
+            /*
+            // Do something with that input
+            var message = "";
+            if (userInput.length % 2 == 0)
+            {
+                message = "There is an even number of letters in your name.";
+            }
+            else
+            {
+                message = "There is an odd number of letters in your name.";
+            } */
+
+            // Output to the console
+            //console.log("Hello " + userInput + " " + message);
+
+            // recall Rock Paper Scissors 
+
+
+            // userInput assumed 1, 2, 3
+
+            function displayUserChoice(choice) 
+            {
+                var convertedChoice = "";
+                if (choice == 1)
+                {
+                    convertedChoice = "Rock";
+                }
+                else if (choice == 2)
+                {
+                    convertedChoice = "Paper";
+                }
+                else if (choice == 3)
+                {
+                    convertedChoice = "Scissors";
+                }
+                else
+                {
+                    convertedChoice = "Error";
+                }
+                return convertedChoice;
+            }
+
+            function displayRPSOutput(player, comp)
+            {
+                console.log("Player chose: " + displayUserChoice(player) + " and Computer chose: " + displayUserChoice(comp));
+
+                sayHi();
+
+                function sayHi()
+                {
+                    alert("Hi");
+                }
+            }
+
+            // Now whenever in your code you need to refer to the players choice, you can re-use that if statement block to output the choice
+
+            var playerChoice = 1;
+            var computerChoice = 2;
+
+            displayRPSOutput(playerChoice, computerChoice);
+
+            playerChoice = 3;
+            computerChoice = 3;
+
+            displayRPSOutput(playerChoice, computerChoice);
+
+            displayRPSOutput(2, 1);
+
+
+            // Back to this class...
+            function multiplyBy10(num)
+            {
+                return num * 10;
+            }
+
+            function multiplyByX(num)
+            {
+                var x = 20;
+                return num * x;
+            }
+
+            const TAX = 0.13;
+
+            function calculateTax(num)
+            {
+                return num * TAX;
+            }
+
+            console.log( multiplyBy10(10) );
+            console.log( multiplyBy10(5) );
+            console.log( multiplyBy10(2) );
+
+
+            console.log( multiplyByX(10) );
+            //console.log( x );
+            // BASCIALLY: We are in global scope, when we are executing a function, the scope of that function exists, and then no longer exists once its concluded. Meaning we dont have access to any variables declared inside of that function.
+            // BUT: the function does have access to variables and functions declared in global scope. 
+
+            console.log( calculateTax(10.00) );
+
+            console.log( evenOrOddMessage("George") );
+
+
+        </script>
+    </body>
+</html>
